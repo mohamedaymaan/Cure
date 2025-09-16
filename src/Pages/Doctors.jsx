@@ -204,7 +204,7 @@ export default function Doctors() {
         </div>
         <div className="w-full h-screen bg-amber-600 flex flex-col">
           <p className="text-[24px]">Choose Specialties</p>
-          <div className=" w-full no-scrollbar"></div>
+          <div className=" w-full flex gap-[10px] overflow-x-scroll no-scrollbar"></div>
           <div></div>
         </div>
       </div>
