@@ -6,8 +6,12 @@ export default function Layout() {
   return (
     <>
      
-        <Navbar />
-        <Outlet />
+     <div className="w-3/4 mx-auto">
+      <Navbar />
+       <Outlet />
+     </div>
+        
+       
     
     </>
   );

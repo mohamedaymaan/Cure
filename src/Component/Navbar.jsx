@@ -11,7 +11,7 @@ export default function Navbar() {
   const [MenuFlag, SetMenuFlag] = useState(false);
 
   return (
-    <nav className="w-full h-[117px] relative flex items-center justify-evenly lg:justify-between lg:px-[100px] pt-[52px] pb-[24px]  z-10 bg-white">
+    <nav className="w-full h-[117px] relative flex items-center justify-evenly lg:justify-between  pt-[52px] pb-[24px]  z-10 bg-white">
       <Link>
         <img src={Heart} alt="" />
       </Link>
