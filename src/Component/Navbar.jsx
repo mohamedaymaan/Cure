@@ -1,61 +1,60 @@
-import { Link, NavLink } from "react-router";
-import Avatar from '../assets/icons/Avatar.png'
-import Heart from '../assets/icons/BsHeartPulse.png'
-import Magnifer from '../assets/icons/Magnifer.png'
-import Menu from '../assets/icons/Menu.png'
-import Ring from '../assets/icons/Ring.png'
+import { Link } from "react-router";
+import Avatar from "../assets/icons/Avatar.png";
+import Heart from "../assets/icons/blueheart.png";
+import Magnifer from "../assets/icons/grayMagnifer.png";
+import Menu from "../assets/icons/Menu.png";
+import Ring from "../assets/icons/Ring.png";
+import Close from "../assets/icons/close.png";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [MenuFlag, SetMenuFlag] = useState(false);
+
   return (
-    <>
-      <nav className="flex justify-between items-center ">
-        <Link to="/" className="block">
-          <img src={Heart} alt="" />
-          
-        </Link>
-        <div className="block relative">
-          <img src={Magnifer} className="absolute top-2 start-2" alt="" />
-          <input type="text" className="py-2 px-10 rounded-[10px] bg-[#F5F6F7] w-2xl" placeholder="Search about specialty, doctor " />
+    <nav className="w-full h-[117px] relative flex items-center justify-evenly lg:justify-between lg:px-[100px] pt-[52px] pb-[24px]  z-10 bg-white">
+      <Link>
+        <img src={Heart} alt="" />
+      </Link>
+      <Link>
+        <div className="lg:w-[568px] sm:w-[300px] h-[40px] bg-[#F5F6F7] rounded-[10px] flex items-center gap-[16px] py-[8px] px-[16px] ">
+          <img src={Magnifer} className="size-[24px]" />
+          <p className="font-[400] text-[#99A2AB] text-[16px]">
+            Search about specialty, doctor
+          </p>
         </div>
-        <div className="block">
-          <ul className="flex justify-between items-center gap-4">
-            <li>
-              <Link to=''>
-                <img src={Menu} alt=""  />
+      </Link>
+      <div className="flex gap-[32px]">
+        <div className="flex gap-[16px]">
+          {MenuFlag && (
+            <>
+              <Link to="/">
+                <div className=" h-[40px] py-[6px] px-[16px] bg-[#F5F6F7] flex justify-center items-center rounded-[10px]">
+                  Home
+                </div>
               </Link>
-            </li>
-            <li>
-              <Link to=''>
-                <img src={Ring} alt="" />
+              <Link to="doctors">
+                <div className=" h-[40px] py-[6px] px-[16px] bg-[#F5F6F7] flex justify-center items-center rounded-[10px]">
+                  Bookings
+                </div>
               </Link>
-            </li>
-            <li>
-              <img src={Avatar} alt="" />
-            </li>
-          </ul>
+            </>
+          )}
+          <div
+            className="cursor-pointer"
+            onClick={() => SetMenuFlag((prev) => !prev)}
+          >
+            {MenuFlag ? (
+              <img src={Close} className="size-[40px] shrink-0" />
+            ) : (
+              <img src={Menu} className="size-[40px] shrink-0" />
+            )}
+          </div>
+          <Link>
+            <img src={Ring} className="size-[40px] shrink-0" />
+          </Link>
         </div>
-        {/* Mobile Responsive*/}
-        {/* <div className='lg:hidden w-full space-y-5'>
-     <div className='flex justify-between items-center '>
-        <div>
-            <h2 className='font-bold text-secondary-900 text-lg'>Welcome</h2>
-            <p className='text-secondary-400 font-extralight'>explore The Best Places In World!</p>
-        </div>
-        <div className='rounded-full overflow-hidden size-12'>
-        <img src={avatar} alt="" className='w-full h-full object-cover'/>
-        </div>
+        <img src={Avatar} className="size-[40px] rounded-full" />
       </div>
-     <div className='flex items-center gap-3'>
-        <div className='relative flex-1'>
-            <input type="text" className='w-full border border-secondary-200 rounded-lg py-2 px-9 placeholder:text-secondary-300 focus:outline-0 focus:border-primary-300 ' placeholder='Search ...'/>
-            <img src={searchMobile} alt="" className='absolute top-1/2 size-6 -translate-y-1/2 left-1.5' />
-        </div>
-        <div className='border border-secondary-200 rounded-lg p-2'>
-            <img src={unionMobile} alt="" />
-        </div>
-     </div>
-    </div> */}
-      </nav>
-    </>
+    </nav>
   );
 }
