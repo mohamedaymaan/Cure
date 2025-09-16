@@ -2,6 +2,7 @@ import {  createHashRouter, RouterProvider } from 'react-router'
 import './App.css'
 import Layout from './Layout/Layout'
 import Home from './Pages/Home/Home'
+import Appointment from './Pages/Appointment/Appointment'
 
 
 
@@ -19,6 +20,10 @@ const router = createHashRouter([
     {
       path:'home', 
       element:<Home/>
+    },
+    {
+      path:'appointment', 
+      element:<Appointment/>
     }
   ]},
 ])
