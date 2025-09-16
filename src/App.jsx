@@ -23,10 +23,6 @@ function App() {
           path: "doctors",
           element: <Doctors />,
         },
-        {
-          path: "appointment",
-          element: <Appointment />,
-        },
       ],
     },
   ]);

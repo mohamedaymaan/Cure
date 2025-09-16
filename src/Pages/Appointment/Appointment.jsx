@@ -15,7 +15,7 @@ import CalenderComponent from "../../Component/Calender/Calender";
 export default function Appointment() {
   return (
     <>
-      <div className="w-3/4 mx-auto">
+      <div>
         <div>Appointment</div>
         <div className="flex items-center my-2">
           <Link to="#">
