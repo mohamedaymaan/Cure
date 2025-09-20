@@ -9,8 +9,8 @@ import icon3 from "../assets/icons/locationicon.png";
 
 export default function Footer() {
   return (
-    <div className=" hidden md:flex w-screen h-[450px] bg-[#05162C] p-[100px] pb-[30px]  flex-col justify-between ">
-      <div className="flex justify-between">
+    <div className=" flex w-full md:w-screen h-fit md:h-[450px] bg-[#05162C] pt-[30px] px-[50px] md:p-[100px] md:pb-[30px]  pb-[30px]  flex-col justify-between ">
+      <div className="flex flex-col gap-[20px] md:gap-[0px] md:flex-row justify-between">
         <div className="flex flex-col gap-[24px]">
           <div className="flex gap-[16px]">
             <img src={heart} className="size-[50px]" />
@@ -35,10 +35,10 @@ export default function Footer() {
             </button>
           </div>
         </div>
-        <div className="flex gap-[50px]">
+        <div className="flex flex-col md:flex-row ml-[10px] gap-[50px]">
           <div className="text-white flex flex-col gap-[24px]">
             <p className="text-[24px]">Company</p>
-            <ul>
+            <ul className="text-[13px] lg:text-[16px]">
               <li>Home</li>
               <li>Doctors</li>
               <li>FAQs</li>
@@ -47,7 +47,7 @@ export default function Footer() {
           </div>
           <div className="text-white flex flex-col gap-[24px]">
             <p className="text-[24px]">Support</p>
-            <ul>
+            <ul className="text-[13px] lg:text-[16px]">
               <li>Help Center</li>
               <li>Doctors</li>
               <li>How it works</li>
@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
           <div className="text-white flex flex-col gap-[24px]">
             <p className="text-[24px]">Contact Info</p>
-            <ul>
+            <ul className="text-[13px] lg:text-[16px]">
               <li className="flex gap-[15px]">
                 <img src={icon1} className="size-[16px]" />
                 <div>
@@ -84,9 +84,9 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex w-full justify-between text-white">
+      <div className="flex w-full justify-between mt-[20px] md:mt-[0px] text-white">
         <p>@2024 Techvio - All Right Reserved</p>
-        <p>Terms & Condition | Privacy Policy</p>
+        <p className="hidden md:block">Terms & Condition | Privacy Policy</p>
       </div>
     </div>
   );
