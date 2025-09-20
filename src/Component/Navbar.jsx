@@ -6,6 +6,7 @@ import Menu from "../assets/icons/Menu.png";
 import Ring from "../assets/icons/Ring.png";
 import Close from "../assets/icons/close.png";
 import { useState } from "react";
+import Notification from "../Pages/Notification/Notification";
 
 export default function Navbar() {
   const [MenuFlag, SetMenuFlag] = useState(false);
@@ -49,10 +50,9 @@ export default function Navbar() {
               <img src={Menu} className="size-[40px] shrink-0" />
             )}
           </div>
-          <Link>
-            <img src={Ring} className="size-[40px] shrink-0" />
-          </Link>
+          <Notification />
         </div>
+
         <img src={Avatar} className="size-[40px] rounded-full" />
       </div>
     </nav>

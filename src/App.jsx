@@ -4,8 +4,15 @@ import Layout from "./Layout/Layout";
 import Home from "./Pages/Home/Home";
 import Appointment from "./Pages/Appointment/Appointment";
 import Doctors from "./Pages/Doctors";
+import Notification from "./Pages/Notification/Notification";
+import 'flowbite';
+import { useEffect } from "react";
+import Booking from "./Pages/Booking/Booking";
 
 function App() {
+  useEffect(()=>{
+     initFlowbite();
+  },[])
   const router = createHashRouter([
     {
       path: "/",
@@ -26,6 +33,14 @@ function App() {
         {
           path: "appointment",
           element: <Appointment />,
+        },
+        {
+          path: "notification",
+          element: <Notification />,
+        },
+        {
+          path: "booking",
+          element: <Booking />,
         }
       ],
     },
