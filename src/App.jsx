@@ -12,6 +12,8 @@ import SearchLocation from "./Pages/Search/SearchLocation";
 import LoadingMap from "./Pages/Search/LoadingMap";
 import SearchResult from "./Pages/Search/SearchResult";
 import PhoneMap from "./Pages/Map/PhoneMap";
+import { useEffect } from "react";
+import { initFlowbite } from "flowbite";
 
 function App() {
   useEffect(() => {
