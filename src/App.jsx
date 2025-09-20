@@ -14,9 +14,9 @@ import SearchResult from "./Pages/Search/SearchResult";
 import PhoneMap from "./Pages/Map/PhoneMap";
 
 function App() {
-  useEffect(()=>{
-     initFlowbite();
-  },[])
+  useEffect(() => {
+    initFlowbite();
+  }, []);
   const router = createHashRouter([
     {
       path: "/",
@@ -66,6 +66,10 @@ function App() {
         {
           path: "the map",
           element: <PhoneMap />,
+        },
+        {
+          path: "appointment",
+          element: <Appointment />,
         },
       ],
     },
