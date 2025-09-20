@@ -3,11 +3,15 @@ import "./App.css";
 import Layout from "./Layout/Layout";
 import Home from "./Pages/Home/Home";
 import Appointment from "./Pages/Appointment/Appointment";
-import Doctors from "./Pages/Doctors";
-import Notification from "./Pages/Notification/Notification";
-import 'flowbite';
-import { useEffect } from "react";
-import Booking from "./Pages/Booking/Booking";
+import Doctors from "./Pages/Doctors/Doctors";
+import Favourite from "./Pages/Favourite/Favourite";
+import Specialist from "./Pages/Specialist/Specialist";
+import Search from "./Pages/Search/Search";
+import Mappage from "./Pages/Map/Mappage";
+import SearchLocation from "./Pages/Search/SearchLocation";
+import LoadingMap from "./Pages/Search/LoadingMap";
+import SearchResult from "./Pages/Search/SearchResult";
+import PhoneMap from "./Pages/Map/PhoneMap";
 
 function App() {
   useEffect(()=>{
@@ -31,17 +35,38 @@ function App() {
           element: <Doctors />,
         },
         {
-          path: "appointment",
-          element: <Appointment />,
+          path: "favourite",
+          element: <Favourite />,
         },
         {
-          path: "notification",
-          element: <Notification />,
+          path: "specialist",
+          element: <Specialist />,
         },
         {
-          path: "booking",
-          element: <Booking />,
-        }
+          path: "search",
+          element: <Search />,
+        },
+        {
+          path: "map",
+          element: <Mappage />,
+        },
+        {
+          path: "searchlocation",
+          element: <SearchLocation />,
+        },
+
+        {
+          path: "loadingmap",
+          element: <LoadingMap />,
+        },
+        {
+          path: "searchresult",
+          element: <SearchResult />,
+        },
+        {
+          path: "the map",
+          element: <PhoneMap />,
+        },
       ],
     },
   ]);
