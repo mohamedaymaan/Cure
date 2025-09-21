@@ -11,6 +11,9 @@ import closeicon from "../../assets/icons/closeicon.png";
 import { Link, useNavigate } from "react-router";
 import Magnifer from "../../assets/icons/grayMagnifer.png";
 import googlemap from "../../assets/GoogleMap.png";
+import AuthContext from "../../Context/AuthContext"; 
+import { useContext } from "react";
+
 
 // import  axios  from axios';
 export default function Doctors() {
@@ -22,7 +25,7 @@ export default function Doctors() {
   const navigate = useNavigate();
   const [search, setsearch] = useState("");
   const [searchdata, setSearchdata] = useState([]);
-
+  const { token } = useContext(AuthContext);
   async function handleSearch() {
     const res = await axios
       .get(
@@ -31,7 +34,7 @@ export default function Doctors() {
         {
           headers: {
             Authorization:
-              "Bearer 194|qwVMkzwb8Wa9RVVEVq4TmUam9gejtRQhM6cJibAi449b0b3f",
+              `Bearer ${token}` ,
           },
         }
       )
@@ -86,7 +89,7 @@ export default function Doctors() {
         {
           headers: {
             Authorization:
-              "Bearer 173|SCklzkSh8yte2gFlnoKsC8Jx9Nvl6YCMMYxrQKeb37b2652b",
+              `Bearer ${token}`,
           },
         }
       )

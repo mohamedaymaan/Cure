@@ -1,8 +1,12 @@
-@import "tailwindcss";
 
 @layer base {
   body {
     @apply font-montserrat;
+  }
+}
+@layer base {
+  h6 {
+    font-family: Georgia, serif;
   }
 }
 
@@ -35,3 +39,5 @@
   --color-NavyBlue : #145db8;
 
 }
+
+@import "tailwindcss";

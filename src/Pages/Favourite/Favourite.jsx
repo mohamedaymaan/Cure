@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import doctor from "../../assets/icons/doctor.jpg";
 import DoctorCard from "../../Component/DoctorCard";
 import hearts from "../../assets/icons/hearts.png";
 import Arrow from "../../assets/icons/Alt Arrow Down.png";
 import { useNavigate } from "react-router";
+import AuthContext from "../../Context/AuthContext"; 
+
 
 export default function Favourite() {
   const navigate = useNavigate();

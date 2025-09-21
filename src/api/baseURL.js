@@ -1,0 +1,1 @@
+export const BASE_URL ='http://round5-online-booking-with-doctor-api.huma-volve.com/api'

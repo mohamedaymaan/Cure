@@ -2,6 +2,7 @@ import { createHashRouter, RouterProvider } from "react-router";
 import "./App.css";
 import Layout from "./Layout/Layout";
 import Home from "./Pages/Home/Home";
+
 import Appointment from "./Pages/Appointment/Appointment";
 import Doctors from "./Pages/Doctors/Doctors";
 import Favourite from "./Pages/Favourite/Favourite";
@@ -14,13 +15,25 @@ import SearchResult from "./Pages/Search/SearchResult";
 import PhoneMap from "./Pages/Map/PhoneMap";
 import { useEffect } from "react";
 import { initFlowbite } from "flowbite";
+<<<<<<< HEAD
 import Booking from "./Pages/Booking/Booking";
 import { Toaster } from "react-hot-toast";
 
+=======
+import SignUp from "./Pages/auth/SignUp";
+import Login from "./Pages/auth/Login";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import VerifyOTP from "./Pages/auth/VerifyOTP";
+import ForgetPassword from "./Pages/auth/ForgetPassword";
+import ResetPassword from "./Pages/auth/ResetPassword";
+import Test from "./Pages/Test";
+>>>>>>> origin/newbranch
 function App() {
   useEffect(() => {
     initFlowbite();
   }, []);
+
   const router = createHashRouter([
     {
       path: "/",
@@ -81,11 +94,40 @@ function App() {
         },
       ],
     },
+    {
+      path: "/register",
+      element: <SignUp />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "forgetpass",
+      element: <ForgetPassword />,
+    },
+    {
+      path: "verifyotp",
+      element: <VerifyOTP />,
+    },
+    {
+      path: "resetpassword",
+      element: <ResetPassword />,
+    },
+    {
+      path: "/test",
+      element: <Test />,
+    },
   ]);
   return (
     <>
       <RouterProvider router={router} />
+<<<<<<< HEAD
       <Toaster />
+=======
+
+      <ToastContainer position="top-center" autoClose={3000} />
+>>>>>>> origin/newbranch
     </>
   );
 }
