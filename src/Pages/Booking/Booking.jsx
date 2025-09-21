@@ -74,7 +74,7 @@ export default function Booking() {
                     <img src={Calender} alt="" />
                     <p className="mx-2">Monday, July 21 - 11:00 Am</p>
                   </div>
-                  <p className="text-NavyBlue">Upcoming</p>
+                  <p className="text-NavyBlue">{status}</p>
                 </div>
                 <hr className="border-neutral-200 my-4" />
                 <div>
