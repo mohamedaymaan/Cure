@@ -9,7 +9,7 @@ import icon3 from "../assets/icons/locationicon.png";
 
 export default function Footer() {
   return (
-    <div className=" flex w-full md:w-screen h-fit md:h-[450px] bg-[#05162C] pt-[30px] px-[50px] md:p-[100px] md:pb-[30px]  pb-[30px]  flex-col justify-between ">
+    <div className=" flex w-full h-fit md:h-[450px] bg-[#05162C] pt-[30px] px-[50px] md:p-[100px] md:pb-[30px]  pb-[30px]  flex-col justify-between ">
       <div className="flex flex-col gap-[20px] md:gap-[0px] md:flex-row justify-between">
         <div className="flex flex-col gap-[24px]">
           <div className="flex gap-[16px]">

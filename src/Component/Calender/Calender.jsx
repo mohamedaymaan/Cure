@@ -1,12 +1,16 @@
-import React, { act, useState } from "react";
+import React, { act, useEffect, useState } from "react";
 import ArrowUp from "../../assets/icons/ArrowUp.png";
 import ArrowDown from "../../assets/icons/ArrowDown.png";
 import Calendar from "../../assets/icons/calendar.png";
 import CalendarBlue from "../../assets/icons/calendarBlue.png";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export default function CalenderComponent() {
+  useEffect(() => {
+    handleDisplayData();
+  }, []);
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let [active, setActive] = useState(null);
   let [activeTime, setActiveTime] = useState(null);
@@ -14,28 +18,37 @@ export default function CalenderComponent() {
   let [dateList, setDateList] = useState([]);
   let { register, handleSubmit, setValue } = useForm();
 
-
-  function handleDate({ date, time }) {
+  async function handleDate({ date, time }) {
     let formData = new FormData();
     formData.append("doctor_id", 1);
     formData.append("date", date);
     formData.append("time", time);
-    // let res = axios.post(
-    //   `http://round5-online-booking-with-doctor-api.huma-volve.com/api/appointments`
-    // );
-    console.log(formData);
+
+    let { data } = await axios
+      .post(
+        `http://round5-online-booking-with-doctor-api.huma-volve.com/api/appointments`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_USER_TOKEN}`,
+          },
+        }
+      )
+      .catch((err) => {
+        console.log(err.response?.data.message);
+        toast.error(err.response?.data.message);
+      });
+    if (data?.message == "Appointment booked successfully.") {
+      toast.success(data?.message);
+    }
   }
-
-
-
-
   async function handleDisplayData() {
     let { data } = await axios
       .get(
         `http://round5-online-booking-with-doctor-api.huma-volve.com/api/doctors/1/available-slots`,
         {
           headers: {
-            Authorization: `Bearer 242|0aqDnylWidamqIVixeMpLxD0GMcSy73CQAc2TiYw42797c65`,
+            Authorization: `Bearer ${import.meta.env.VITE_USER_TOKEN}`,
           },
         }
       )
@@ -55,7 +68,7 @@ export default function CalenderComponent() {
     const formattedTime = `${hours}:${min} ${dateForm}`;
     return formattedTime;
   }
-  handleDisplayData();
+
   return (
     <>
       <div className="p-5 border border-neutral-500 rounded-2xl">
@@ -83,6 +96,7 @@ export default function CalenderComponent() {
                 <div key={i}>
                   <button
                     key={i}
+                    type="button"
                     onClick={() => {
                       setActive(i);
                       setValue("date", item.date);
@@ -98,10 +112,10 @@ export default function CalenderComponent() {
                       <p>{new Date(item.date).getDay() + 1}</p>
                     </div>
                   </button>
-                  <input type="text" {...register("date")} className="hidden" />
                 </div>
               );
             })}
+            <input type="hidden" {...register("date")} />
           </div>
           <div className="flex my-8 gap-4 flex-wrap ">
             {dateList.map((item, i) => {
@@ -112,6 +126,7 @@ export default function CalenderComponent() {
                       setActiveTime(i);
                       setValue("time", item.time);
                     }}
+                    type="button"
                     key={i}
                     className={`py-2  w-[105px] h-[40px] rounded-[8px]  flex flex-col justify-center items-center ${
                       activeTime === i
@@ -121,10 +136,10 @@ export default function CalenderComponent() {
                   >
                     <p>{handleTime(item?.time)}</p>
                   </button>
-                  <input type="text" {...register("time")} className="hidden" />
                 </div>
               );
             })}
+            <input type="hidden" {...register("time")} />
           </div>
           <div className="flex justify-between">
             <div className="flex items-center">
@@ -132,7 +147,6 @@ export default function CalenderComponent() {
               <p className="mx-1.5 text-Navy text-[14px] font-medium">
                 Monday,November 15 - 3:00PM
               </p>
-              
             </div>
             <button
               type="submit"

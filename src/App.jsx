@@ -14,6 +14,8 @@ import SearchResult from "./Pages/Search/SearchResult";
 import PhoneMap from "./Pages/Map/PhoneMap";
 import { useEffect } from "react";
 import { initFlowbite } from "flowbite";
+import Booking from "./Pages/Booking/Booking";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   useEffect(() => {
@@ -73,12 +75,17 @@ function App() {
           path: "appointment",
           element: <Appointment />,
         },
+        {
+          path: "booking",
+          element: <Booking />,
+        },
       ],
     },
   ]);
   return (
     <>
       <RouterProvider router={router} />
+      <Toaster />
     </>
   );
 }

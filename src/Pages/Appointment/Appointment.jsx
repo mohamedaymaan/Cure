@@ -24,7 +24,7 @@ export default function Appointment() {
     <>
       <div className="w-4/5 mx-auto my-3">
         <div className="flex items-center my-2">
-          <Link to="#">
+          <Link to="/">
             <img src={ArrowLeft} alt="icon" />
           </Link>
           <p className="text-Navy mx-2.5 font-normal text-[20px]">

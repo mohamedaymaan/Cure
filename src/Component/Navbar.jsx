@@ -9,6 +9,7 @@ import favicon from "../assets/icons/favourite.png";
 import { useEffect, useState } from "react";
 import locateicon from "../assets/icons/locateicon.png";
 import axios from "axios";
+import Notification from "../Pages/Notification/Notification";
 
 export default function Navbar() {
   const [MenuFlag, SetMenuFlag] = useState(false);
@@ -34,7 +35,7 @@ export default function Navbar() {
       <Link className="size[32px] shrink-0 mr-[10px]">
         <img src={Heart} className="hidden md:block" />
       </Link>
-      <Link className=" hidden shrink-3  md:block md:w-1/2  mr-[10px] max-w-[568px]">
+      <Link to="/doctors" className=" hidden shrink-3  md:block md:w-1/2  mr-[10px] max-w-[568px]" >
         <div className=" h-[40px] bg-[#F5F6F7] rounded-[10px] flex items-center gap-[16px] py-[8px] px-[16px] ">
           <img src={Magnifer} className="size-[24px]" />
           <p className="font-[400] text-[#99A2AB] text-[16px]">
@@ -51,7 +52,7 @@ export default function Navbar() {
                   Home
                 </div>
               </Link>
-              <Link to="doctors">
+              <Link to="/booking">
                 <div className=" h-[40px] py-[6px] px-[16px] bg-[#F5F6F7] flex justify-center items-center rounded-[10px]">
                   Bookings
                 </div>
@@ -79,9 +80,9 @@ export default function Navbar() {
               <img src={favicon} className="w-full shrink-0" />
             </div>
           </Link>
-          <Link to="" className="shrink-0">
-            <img src={Ring} className="size-[32px] sm:size-[40px] shrink-0" />
-          </Link>
+         <div>
+          <Notification/>
+         </div>
         </div>
         <div className="flex md:block shrink-0 gap-[5px]">
           <img src={Avatar} className="size-[40px] rounded-full" />

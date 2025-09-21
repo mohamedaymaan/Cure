@@ -179,13 +179,18 @@ export default function Home() {
               </p>
             </div>
             <div className="flex gap-[32px]">
-              <button className=" w-[120px]  font-[400] sm:w-[196px] h-[48px] rounded-[10px] bg-[#145DB8] text-white ">
-                Get started
-              </button>
-              <button className=" w-[120px] text-[10px] sm:text-[16px]  font-[400] sm:w-[196px] bg-white h-[48px] flex justify-center items-center gap-[8px] text-[#145DB8] border rounded-[10px] border-[#145DB8]  ">
-                <img src={calender} className="w-[19px] h-[20px]" />
-                Book Appointment
-              </button>
+              <Link to="/doctors">
+                <button className=" w-[120px]  font-[400] sm:w-[196px] h-[48px] rounded-[10px] bg-[#145DB8] text-white cursor-pointer">
+                  Get started
+                </button>
+              </Link>
+
+              <Link to="/appointment">
+                <button className=" w-[120px] text-[10px] sm:text-[16px]  font-[400] sm:w-[196px] bg-white h-[48px] flex justify-center items-center gap-[8px] text-[#145DB8] border rounded-[10px] border-[#145DB8]  ">
+                  <img src={calender} className="w-[19px] h-[20px]" />
+                  Book Appointment
+                </button>
+              </Link>
             </div>
           </div>
           <p className=" hidden md:block font-[400] text-[40px] text-center ">
