@@ -1,3 +1,22 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./Layout/Layout";
+import Home from "./Pages/Home/Home";
+import Notification from "./Component/Notification";
+// Page Profile
+import ProfilePage from "./Profile/ProfilePage";
+import EditProfile from "./Profile/EditProfile";
+import Settings from "./Profile/Settings";
+import PaymentMethod from "./Profile/PaymentMethod";
+import EmptyCards from "./Profile/EmptyCards";
+import PasswordManagement from "./Profile/PasswordManagement";
+import VisaVersion from "./Profile/VisaVersion";
+import AddNewCard from "./Profile/AddNewCard";
+import FAQs from "./Profile/FAQs";
+import PrivacyPolicy from "./Profile/PrivacyPolicy";
+import Favorite from "./Component/Favorite";
+import Done from "./Profile/Done";
+// import CardsWrapper from "./Profile/CardsWrapper";
+
 import { createHashRouter, RouterProvider } from "react-router";
 import "./App.css";
 import Layout from "./Layout/Layout";
@@ -28,105 +47,27 @@ import Test from "./Pages/Test";
 import { ProtectUser } from "./protectedRouting/ProtectedRouting";
 import LayoutWithoutNav from "./Layout/LayoutwithoutNav";
 function App() {
-  useEffect(() => {
-    initFlowbite();
-  }, []);
 
-  const router = createHashRouter([
+const router = createHashRouter([
+  {
+    path:'/',
+    element:<Layout /> ,
+    children:[
+  {
+    index:true, 
+    element:<Home/>
+  }, 
     {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          index: true,
-          element:<ProtectUser><Home /></ProtectUser> ,
-        },
-        {
-          path: "home",
-          element: <ProtectUser><Home /></ProtectUser>,
-        },
-        {
-          path: "doctors",
-          element: <ProtectUser><Doctors /></ProtectUser>,
-        },
-        {
-          path: "favourite",
-          element:<ProtectUser><Favourite /></ProtectUser>,
-        },
-        {
-          path: "specialist",
-          element: <ProtectUser><Specialist /></ProtectUser>,
-        },
-        {
-          path: "search",
-          element: <ProtectUser><Search /></ProtectUser>,
-        },
-        {
-          path: "map",
-          element: <ProtectUser><Mappage /></ProtectUser>,
-        },
-        {
-          path: "searchlocation",
-          element: <ProtectUser><SearchLocation /></ProtectUser>,
-        },
-
-        {
-          path: "loadingmap",
-          element: <ProtectUser><LoadingMap /></ProtectUser>,
-        },
-        {
-          path: "searchresult",
-          element: <ProtectUser><SearchResult /></ProtectUser>,
-        },
-        {
-          path: "the map",
-          element: <ProtectUser><PhoneMap /></ProtectUser>,
-        },
-        {
-          path: "appointment",
-          element: <ProtectUser><Appointment /></ProtectUser>,
-        },
-        {
-          path: "booking",
-          element: <ProtectUser><Booking /></ProtectUser>,
-        },
-      ],
-    },
-    {
-      path: "/",
-      element: <LayoutWithoutNav />,
-      children: [
-        {
-          path: "login",
-          element: <Login />,
-        },
-        {
-          path: "register",
-          element: <SignUp />,
-        },
-        {
-          path: "forgetpass",
-          element: <ForgetPassword />,
-        },
-        {
-          path: "verifyotp",
-          element: <VerifyOTP />,
-        },
-        {
-          path: "resetpassword",
-          element: <ResetPassword />,
-        },
-        { path: "*", element: "<Notfound />" },
-      ],
-    },
-  ]);
-  return (
+      path:'home', 
+      element:<Home/>
+    }
+  ]},
+])
+   return (
     <>
-      <RouterProvider router={router} />
-      <Toaster />
-      <ToastContainer position="top-center" autoClose={3000} />
-    </>
-  );
+    <RouterProvider router={router} /> 
+      </>
+  )
 }
 
-export default App;
+export default App
