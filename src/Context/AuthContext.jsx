@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
       setUser(JSON.parse(storedUser));
       setToken(storedToken);
     }
+    console.log("storedToken on refresh:", storedToken);
   }, []);
 
   //   REGISTER
@@ -57,8 +58,8 @@ export const AuthProvider = ({ children }) => {
 
       setUser(user);
       setToken(token);
-      localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", token);
+      
 
       toast.success(result.message || "Registered successfully");
       return true;
@@ -93,7 +94,7 @@ export const AuthProvider = ({ children }) => {
       setUser(user);
       setToken(token);
       localStorage.setItem("user", JSON.stringify(user));
-      localStorage.setItem("token", JSON.stringify(token));
+      localStorage.setItem("token", token);
       console.log(token);
       toast.success(result.message);
       return true;
