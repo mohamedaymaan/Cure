@@ -30,7 +30,7 @@ export default function CalenderComponent() {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_USER_TOKEN}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         }
       )

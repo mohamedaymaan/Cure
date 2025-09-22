@@ -31,9 +31,9 @@ export default function Reviews() {
   return (
     <>
       <div className="flex gap-3.5 flex-wrap">
-        {rev.map((review) => {
+        {rev.map((review,i) => {
           return (
-            <div className="py-[12px] px-[14px] border border-neutral-400 rounded-2xl w-[48%]">
+            <div key={i} className="py-[12px] px-[14px] border border-neutral-400 rounded-2xl w-[48%]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <img src={Avatar} alt="" />

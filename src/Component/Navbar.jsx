@@ -21,8 +21,7 @@ export default function Navbar() {
         "http://round5-online-booking-with-doctor-api.huma-volve.com/api/me",
         {
           headers: {
-            Authorization:
-              "Bearer 56|fwPIl697keOhpoSexeR9OIIiSkAoAr5u2YlkCockbb83191b",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       )
@@ -35,7 +34,10 @@ export default function Navbar() {
       <Link className="size[32px] shrink-0 mr-[10px]">
         <img src={Heart} className="hidden md:block" />
       </Link>
-      <Link to="/doctors" className=" hidden shrink-3  md:block md:w-1/2  mr-[10px] max-w-[568px]" >
+      <Link
+        to="/doctors"
+        className=" hidden shrink-3  md:block md:w-1/2  mr-[10px] max-w-[568px]"
+      >
         <div className=" h-[40px] bg-[#F5F6F7] rounded-[10px] flex items-center gap-[16px] py-[8px] px-[16px] ">
           <img src={Magnifer} className="size-[24px]" />
           <p className="font-[400] text-[#99A2AB] text-[16px]">
@@ -80,9 +82,9 @@ export default function Navbar() {
               <img src={favicon} className="w-full shrink-0" />
             </div>
           </Link>
-         <div>
-          <Notification/>
-         </div>
+          <div>
+            <Notification />
+          </div>
         </div>
         <div className="flex md:block shrink-0 gap-[5px]">
           <img src={Avatar} className="size-[40px] rounded-full" />

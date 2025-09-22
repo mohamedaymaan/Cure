@@ -6,7 +6,7 @@ import facebook from "../../assets/images/facebook.png";
 import apple from "../../assets/images/apple.png";
 import OrLine from "../../assets/images/OrLine.png";
 import { Link, useNavigate } from "react-router-dom";
-// import Heart from "../../assets/icons/BsHeartPulse.png";
+import Heart from "../../assets/icons/blueheart.png";
 import { useFormik } from "formik";
 import { registerSchema } from "../../schemas/schemas";
 import { toast } from "react-toastify";

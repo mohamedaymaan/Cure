@@ -15,11 +15,8 @@ import SearchResult from "./Pages/Search/SearchResult";
 import PhoneMap from "./Pages/Map/PhoneMap";
 import { useEffect } from "react";
 import { initFlowbite } from "flowbite";
-<<<<<<< HEAD
 import Booking from "./Pages/Booking/Booking";
 import { Toaster } from "react-hot-toast";
-
-=======
 import SignUp from "./Pages/auth/SignUp";
 import Login from "./Pages/auth/Login";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,7 +25,8 @@ import VerifyOTP from "./Pages/auth/VerifyOTP";
 import ForgetPassword from "./Pages/auth/ForgetPassword";
 import ResetPassword from "./Pages/auth/ResetPassword";
 import Test from "./Pages/Test";
->>>>>>> origin/newbranch
+import { ProtectUser } from "./protectedRouting/ProtectedRouting";
+import LayoutWithoutNav from "./Layout/LayoutwithoutNav";
 function App() {
   useEffect(() => {
     initFlowbite();
@@ -41,93 +39,92 @@ function App() {
       children: [
         {
           index: true,
-          element: <Home />,
+          element:<ProtectUser><Home /></ProtectUser> ,
         },
         {
           path: "home",
-          element: <Home />,
+          element: <ProtectUser><Home /></ProtectUser>,
         },
         {
           path: "doctors",
-          element: <Doctors />,
+          element: <ProtectUser><Doctors /></ProtectUser>,
         },
         {
           path: "favourite",
-          element: <Favourite />,
+          element:<ProtectUser><Favourite /></ProtectUser>,
         },
         {
           path: "specialist",
-          element: <Specialist />,
+          element: <ProtectUser><Specialist /></ProtectUser>,
         },
         {
           path: "search",
-          element: <Search />,
+          element: <ProtectUser><Search /></ProtectUser>,
         },
         {
           path: "map",
-          element: <Mappage />,
+          element: <ProtectUser><Mappage /></ProtectUser>,
         },
         {
           path: "searchlocation",
-          element: <SearchLocation />,
+          element: <ProtectUser><SearchLocation /></ProtectUser>,
         },
 
         {
           path: "loadingmap",
-          element: <LoadingMap />,
+          element: <ProtectUser><LoadingMap /></ProtectUser>,
         },
         {
           path: "searchresult",
-          element: <SearchResult />,
+          element: <ProtectUser><SearchResult /></ProtectUser>,
         },
         {
           path: "the map",
-          element: <PhoneMap />,
+          element: <ProtectUser><PhoneMap /></ProtectUser>,
         },
         {
           path: "appointment",
-          element: <Appointment />,
+          element: <ProtectUser><Appointment /></ProtectUser>,
         },
         {
           path: "booking",
-          element: <Booking />,
+          element: <ProtectUser><Booking /></ProtectUser>,
         },
       ],
     },
     {
-      path: "/register",
-      element: <SignUp />,
-    },
-    {
-      path: "/login",
-      element: <Login />,
-    },
-    {
-      path: "forgetpass",
-      element: <ForgetPassword />,
-    },
-    {
-      path: "verifyotp",
-      element: <VerifyOTP />,
-    },
-    {
-      path: "resetpassword",
-      element: <ResetPassword />,
-    },
-    {
-      path: "/test",
-      element: <Test />,
+      path: "/",
+      element: <LayoutWithoutNav />,
+      children: [
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <SignUp />,
+        },
+        {
+          path: "forgetpass",
+          element: <ForgetPassword />,
+        },
+        {
+          path: "verifyotp",
+          element: <VerifyOTP />,
+        },
+        {
+          path: "resetpassword",
+          element: <ResetPassword />,
+        },
+        { path: "*", element: "<Notfound />" },
+      ],
     },
   ]);
   return (
     <>
       <RouterProvider router={router} />
-<<<<<<< HEAD
       <Toaster />
-=======
-
       <ToastContainer position="top-center" autoClose={3000} />
->>>>>>> origin/newbranch
     </>
   );
 }
