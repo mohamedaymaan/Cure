@@ -33,50 +33,35 @@ export default function Home() {
   const [specialities, setSpecialities] = useState([]);
   const [doctors, setDoctors] = useState([]);
   const [favIds, setFavIds] = useState([]);
-
+  console.log(import.meta.env.VITE_API_URL)
   function addToFav(id) {
     axios
-      .post(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
-          id,
-        null,
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
+      .post(`${import.meta.env.VITE_API_URL}/favourites/doctors/` + id, null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then(() => setFavIds((prev) => [...prev, id]))
       .catch((err) => console.log(err));
   }
   function removeFromFav(id) {
     axios
-      .delete(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
-          id,
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
+      .delete(`${import.meta.env.VITE_API_URL}/favourites/doctors/` + id, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then(() => setFavIds((prev) => prev.filter((ele) => ele !== id)))
       .catch((err) => console.log(err));
   }
 
   useEffect(() => {
     axios
-      .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors",
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
+      .get(`${import.meta.env.VITE_API_URL}/favourites/doctors`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((data) =>
         setFavIds(data.data.data.map((ele) => ele.doctor_profile_id))
       )
@@ -95,20 +80,16 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/specialities",
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
+      .get(`${import.meta.env.VITE_API_URL}/specialities`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((data) => setSpecialities(data.data.data))
       .catch((err) => console.log(err));
   }, []);
 
-  const show = specialities.map((ele) => (
+  const show = specialities?.map((ele) => (
     <div
       key={ele.id}
       className={
@@ -122,20 +103,16 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/doctors",
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
+      .get(`${import.meta.env.VITE_API_URL}/doctors`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((data) => setDoctors(data.data.data))
       .catch((err) => console.log(err));
   }, []);
 
-  const showdoctors = doctors.map((ele) => (
+  const showdoctors = doctors?.map((ele) => (
     <DoctorCard
       key={ele.user_id}
       img={doctor}

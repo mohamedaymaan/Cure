@@ -95,7 +95,6 @@ import { useNavigate } from "react-router";
 import { ArrowDown } from "../assets/image/index";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai"; // أيقونات من react-icons
 import axios from "axios";
-import { baseURL } from "../Utility/baseURL";
 
 const FAQs = () => {
   const navigate = useNavigate();
@@ -110,7 +109,7 @@ const FAQs = () => {
   useEffect(() => {
     const getFaqs = async () => {
       try {
-        const res = await axios.get(`${baseURL}/faqs`);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/faqs`);
         // console.log("API Response:", res.data.data); // هنا هتشوف شكل البيانات
         setFaqs(res.data.data);
       } catch (err) {

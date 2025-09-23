@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { BASE_URL } from "../api/baseURL"; // أو المسار الصحيح حسب المشروع
 import { useContext } from "react";
 import AuthContext from "../Context/AuthContext"; // أو المسار الصحيح
 import { toast } from "react-toastify";
@@ -12,7 +11,7 @@ function Test() {
   useEffect(() => {
     const testAPI = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/me`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/me`, {
           method: "GET",
           headers: {
             Accept: "application/json",

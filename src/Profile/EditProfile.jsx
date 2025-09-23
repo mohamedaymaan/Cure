@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import axios from "axios";
-import { baseURL } from "../Utility/baseURL";
 import {
   ArrowDown,
   Location,
@@ -24,7 +23,7 @@ const EditProfile = () => {
     const token = localStorage.getItem("token");
 
     axios
-      .get(`${baseURL}/me`, {
+      .get(`${import.meta.env.VITE_API_URL}/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -47,7 +46,7 @@ const EditProfile = () => {
 
     axios
       .put(
-        `${baseURL}/me/update`,
+        `${import.meta.env.VITE_API_URL}/me/update`,
         {
           name: fullName,
           email,

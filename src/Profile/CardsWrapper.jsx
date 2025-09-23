@@ -1,6 +1,5 @@
 // // import React, { useState, useEffect } from "react";
 // // import axios from "axios";
-// // import { baseURL } from "../Utility/baseURL";
 // // import EmptyCards from "./EmptyCards";
 // // import VisaVersion from "./VisaVersion";
 
@@ -11,7 +10,7 @@
 // //   useEffect(() => {
 // //     const getCards = async () => {
 // //       try {
-// //         const res = await axios.get(`${baseURL}/cards`, {
+// //         const res = await axios.get(`${import.meta.env.VITE_API_URL}/cards`, {
 // //           headers: {
 // //             Authorization: `Bearer 246|8O2hrHuj3g3yUYYanT7US1ucN10XpBOTg7mdas6bdbb1d943`, // لازم تبعت التوكن
 // //           },
@@ -39,7 +38,6 @@
 
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
-// import { baseURL } from "../Utility/baseURL";
 // import EmptyCards from "./EmptyCards";
 // import VisaVersion from "./VisaVersion";
 
@@ -50,7 +48,7 @@
 //   useEffect(() => {
 //     const getCards = async () => {
 //       try {
-//         const res = await axios.get(`${baseURL}/cards`, {
+//         const res = await axios.get(`${import.meta.env.VITE_API_URL}/cards`, {
 //           headers: {
 //             Authorization: `Bearer 346|LTFJjwa9Mz5LuYbFqQgxXQyfTTz3Ek21PRdEfOfh45e79249`,
 //           },

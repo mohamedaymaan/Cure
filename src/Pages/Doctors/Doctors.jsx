@@ -11,10 +11,11 @@ import closeicon from "../../assets/icons/closeicon.png";
 import { Link, useNavigate } from "react-router";
 import Magnifer from "../../assets/icons/grayMagnifer.png";
 import googlemap from "../../assets/image/GoogleMap.png";
-import AuthContext from "../../Context/AuthContext";
+import AuthContext from "../../Context/AuthContext"
 
 // import  axios  from axios';
 export default function Doctors() {
+  const {token} = useContext(AuthContext)
   const [filter, setFilter] = useState(false);
   const [specialities, setSpecialities] = useState([]);
   const [doctors, setDoctors] = useState([]);
@@ -27,15 +28,11 @@ export default function Doctors() {
 
   useEffect(() => {
     axios
-      .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors",
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
+      .get(`${import.meta.env.VITE_API_URL}/favourites/doctors`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((data) =>
         setFavIds(data.data.data.map((ele) => ele.doctor_profile_id))
       )
@@ -44,47 +41,32 @@ export default function Doctors() {
 
   async function handleSearch() {
     const res = await axios
-      .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/doctors/search?query=" +
-          search,
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
+      .get(`${import.meta.env.VITE_API_URL}/doctors/search?query=` + search, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((data) => setSearchdata(data.data.data))
       .catch((err) => console.log(err));
   }
 
   function addToFav(id) {
     axios
-      .post(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
-          id,
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
+      .post(`${import.meta.env.VITE_API_URL}/favourites/doctors/` + id, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then(() => setFavIds((prev) => [...prev, id]))
       .catch((err) => console.log(err));
   }
   function removeFromFav(id) {
     axios
-      .delete(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
-          id,
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
+      .delete(`${import.meta.env.VITE_API_URL}/favourites/doctors/` + id, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then(() => setFavIds((prev) => prev.filter((ele) => ele !== id)))
       .catch((err) => console.log(err));
   }
@@ -103,16 +85,14 @@ export default function Doctors() {
     if (!token) return;
 
     axios
-      .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/specialities",
-        {
-          headers: {
-            Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
-          },
-        }
-      )
-      .then((data) => {setSpecialities(data.data.data),console.log(data)})
+      .get(`${import.meta.env.VITE_API_URL}/specialities`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((data) => {
+        setSpecialities(data.data.data), console.log(data);
+      })
       .catch((err) => console.log(err));
   }, [token]);
 
@@ -134,15 +114,11 @@ export default function Doctors() {
   useEffect(() => {
     if (!token) return;
     axios
-      .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/doctors",
-        {
-          headers: {
-            Authorization:
-              "Bearer 444|mheEy1i7TYaB7HeR6X1CH0l7CqpnmQmmhKCLeH93643e7d9a",
-          },
-        }
-      )
+      .get(`${import.meta.env.VITE_API_URL}/doctors`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}}`,
+        },
+      })
       .then((data) => setDoctors(data.data.data))
       .catch((err) => console.log(err));
   }, [token]);

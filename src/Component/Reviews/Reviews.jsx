@@ -14,10 +14,10 @@ export default function Reviews() {
   async function getReviews() {
     let { data } = await axios
       .get(
-        `http://round5-online-booking-with-doctor-api.huma-volve.com/api/doctors/1/reviews`,
+        `${import.meta.env.VITE_API_URL}/doctors/1/reviews`,
         {
           headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_USER_TOKEN}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         }
       )

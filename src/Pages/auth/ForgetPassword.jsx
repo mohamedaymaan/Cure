@@ -36,7 +36,6 @@
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import { BASE_URL } from "../../api/baseURL";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import BackSection from "../../Component/global/BackSection";
@@ -51,7 +50,7 @@ function ForgetPassword() {
 
   const reset = async (email) => {
     try {
-      const response = await fetch(`${BASE_URL}/send-reset-otp`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/send-reset-otp`, {
         method: "POST",
         headers: {
           Accept: "application/json",

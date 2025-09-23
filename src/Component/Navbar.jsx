@@ -10,7 +10,6 @@ import { useContext, useEffect, useState } from "react";
 import locateicon from "../assets/icons/locateicon.png";
 import axios from "axios";
 import Notification from "../Pages/Notification/Notification";
-import { baseURL } from "../Utility/baseURL";
 import {
   Vector,
   Banknote,
@@ -30,7 +29,7 @@ export default function Navbar() {
   useEffect(() => {
     axios
       .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/me",
+        `${import.meta.env.VITE_API_URL}/me`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -61,7 +60,7 @@ export default function Navbar() {
         try {
           // Hardcoded token
 
-          const res = await axios.get(`${baseURL}/me`, {
+          const res = await axios.get(`${import.meta.env.VITE_API_URL}/me`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },

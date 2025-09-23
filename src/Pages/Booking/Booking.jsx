@@ -13,10 +13,10 @@ export default function Booking() {
   async function getBooking() {
     let { data } = await axios
       .get(
-        `http://round5-online-booking-with-doctor-api.huma-volve.com/api/my-bookings?filter=upcoming`,
+        `${import.meta.env.VITE_API_URL}/my-bookings?filter=upcoming`,
         {
           headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_USER_TOKEN}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         }
       )

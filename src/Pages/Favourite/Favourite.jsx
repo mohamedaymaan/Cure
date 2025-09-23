@@ -18,12 +18,12 @@ export default function Favourite() {
   function addToFav(id) {
     axios
       .post(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
+        `${import.meta.env.VITE_API_URL}/favourites/doctors/` +
           id,
         {
           headers: {
             Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+              `Bearer ${localStorage.getItem('token')}`,
           },
         }
       )
@@ -33,12 +33,12 @@ export default function Favourite() {
   function removeFromFav(id) {
     axios
       .delete(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
+        `${import.meta.env.VITE_API_URL}/favourites/doctors/` +
           id,
         {
           headers: {
             Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+              `Bearer ${localStorage.getItem('token')}`,
           },
         }
       )
@@ -49,11 +49,11 @@ export default function Favourite() {
   useEffect(() => {
     axios
       .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors",
+        `${import.meta.env.VITE_API_URL}/favourites/doctors`,
         {
           headers: {
             Authorization:
-              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+              `Bearer ${localStorage.getItem('token')}`,
           },
         }
       )

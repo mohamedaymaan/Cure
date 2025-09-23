@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { baseURL } from "../Utility/baseURL";
 import {
   ArrowDown,
   Visa,
@@ -19,7 +18,7 @@ const PaymentMethod = () => {
   useEffect(() => {
     const getCards = async () => {
       try {
-        const res = await axios.get(`${baseURL}/cards`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/cards`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

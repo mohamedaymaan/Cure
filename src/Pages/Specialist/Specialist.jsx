@@ -10,11 +10,11 @@ export default function Specialist() {
   useEffect(() => {
     axios
       .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/specialities",
+        `${import.meta.env.VITE_API_URL}/specialities`,
         {
           headers: {
             Authorization:
-              "Bearer 177|Q97KoqxjuHU7P5QFNbtV7lGgMDogmyLccPr8bLFJ9925bb01",
+              `Bearer ${localStorage.getItem('token')}}`,
           },
         }
       )

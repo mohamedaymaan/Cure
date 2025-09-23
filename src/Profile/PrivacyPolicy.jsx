@@ -90,7 +90,6 @@ import React, { useEffect, useState } from "react";
 import { ArrowDown } from "../assets/image";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { baseURL } from "../Utility/baseURL";
 
 const PrivacyPolicy = () => {
   const navigate = useNavigate();
@@ -100,7 +99,7 @@ const PrivacyPolicy = () => {
     const getPrivacyPolicy = async () => {
       try {
         const response = await axios.get(
-          `${baseURL}/pages/terms-and-conditions`
+          `${import.meta.env.VITE_API_URL}/pages/terms-and-conditions`
         );
         setPrivacyPolicy(response.data.data);
       } catch (error) {

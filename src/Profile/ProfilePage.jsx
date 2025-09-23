@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { baseURL } from "../Utility/baseURL";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 
 // Icons
@@ -32,7 +31,7 @@ const ProfilePage = () => {
     const token = localStorage.getItem("token");
 
     axios
-      .get(`${baseURL}/me`, {
+      .get(`${import.meta.env.VITE_API_URL}/me`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

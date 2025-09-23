@@ -6,8 +6,6 @@ import Location from "../../assets/icons/Location.png";
 import Medal from "../../assets/icons/medal.png";
 import Message from "../../assets/icons/messages.png";
 import Star from "../../assets/icons/starYellow.png";
-
-
 import { Link } from "react-router";
 import CalenderComponent from "../../Component/Calender/Calender";
 import Reviews from "../../Component/Reviews/Reviews";
@@ -16,10 +14,6 @@ import Footer from "../../Component/Footer";
 import AddReview from "../../Component/Review/AddReview";
 
 export default function Appointment() {
-    
-
-
-
   return (
     <>
       <div className="w-4/5 mx-auto my-3">
@@ -40,28 +34,27 @@ export default function Appointment() {
                 <img src={Pen} alt="" />
                 <span className="text-NavyBlue">add review</span>
               </button> */}
-              <AddReview/>
+              <AddReview />
             </div>
             <div className="flex items-center justify-between my-5">
               <p className="text-[40px] font-normal text-Navy">4.5/5</p>
               <div>
-                 <div className="flex mb-2">
-                {Array.from({ length: 5 }).map((img,i) => {
-                  return <img src={Star} alt="" key={i}/>;
-                })}
+                <div className="flex mb-2">
+                  {Array.from({ length: 5 }).map((img, i) => {
+                    return <img src={Star} alt="" key={i} />;
+                  })}
+                </div>
+                <p>1250+ Reviews</p>
               </div>
-              <p>1250+ Reviews</p>
-              </div>
-             
             </div>
-            <Reviews/>
+            <Reviews />
           </div>
           <div className="col-span-5">
-              <Profile/>
+            <Profile />
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

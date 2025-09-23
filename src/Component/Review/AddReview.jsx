@@ -21,11 +21,11 @@ export default function AddReview() {
     formData.append("comment", comment);
     let { data } = await axios
       .post(
-        `http://round5-online-booking-with-doctor-api.huma-volve.com/api/doctors/1/reviews`,
+        `${import.meta.env.VITE_API_URL}/doctors/1/reviews`,
         formData,
         {
           headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_USER_TOKEN}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         }
       )

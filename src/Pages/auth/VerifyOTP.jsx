@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import BackSection from "../../Component/global/BackSection";
-import { BASE_URL } from "../../api/baseURL";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
@@ -28,7 +27,7 @@ function Verifyotp() {
   const email = localStorage.getItem("email");
   const verify = async (otp, email) => {
     try {
-      const response = await fetch(`${BASE_URL}/verify-otp`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/verify-otp`, {
         method: "POST",
         headers: {
           Accept: "application/json",

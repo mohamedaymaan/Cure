@@ -12,11 +12,11 @@ export default function Search() {
   useEffect(() => {
     axios
       .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/specialities",
+        `${import.meta.env.VITE_API_URL}/specialities`,
         {
           headers: {
             Authorization:
-              "Bearer 175|qSSVGC5oupt5iOQI1U548yGUZsdnNCFZw4BiRCHe7b2586eb",
+              `Bearer ${localStorage.getItem('token')}}`,
           },
         }
       )
@@ -27,11 +27,11 @@ export default function Search() {
   useEffect(() => {
     axios
       .get(
-        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/searchHistories",
+        `${import.meta.env.VITE_API_URL}/searchHistories`,
         {
           headers: {
             Authorization:
-              "Bearer 175|qSSVGC5oupt5iOQI1U548yGUZsdnNCFZw4BiRCHe7b2586eb",
+              `Bearer ${localStorage.getItem('token')}}`,
           },
         }
       )

@@ -26,7 +26,7 @@ export default function CalenderComponent() {
 
     let { data } = await axios
       .post(
-        `http://round5-online-booking-with-doctor-api.huma-volve.com/api/appointments`,
+        `${import.meta.env.VITE_API_URL}/appointments`,
         formData,
         {
           headers: {
@@ -45,10 +45,11 @@ export default function CalenderComponent() {
   async function handleDisplayData() {
     let { data } = await axios
       .get(
-        `http://round5-online-booking-with-doctor-api.huma-volve.com/api/doctors/1/available-slots`,
+        `${import.meta.env.VITE_API_URL}/doctors/1/available-slots`,
         {
           headers: {
-            Authorization: `Bearer ${import.meta.env.VITE_USER_TOKEN}`,
+            Authorization: `Bearer ${localStorage.getItem('token')}}`,
+            
           },
         }
       )

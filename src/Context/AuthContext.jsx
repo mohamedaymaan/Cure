@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from "react";
-import { BASE_URL } from "../api/baseURL";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
@@ -33,7 +32,7 @@ export const AuthProvider = ({ children }) => {
   //   REGISTER
   const register = async (name, email, password, password_confirmation) => {
     try {
-      const response = await fetch(`${BASE_URL}/register`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +72,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       
-      const response = await fetch(`${BASE_URL}/login`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -107,7 +106,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       // const navigate = useNavigate();
-      const response = await fetch(`${BASE_URL}/logout`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/logout`, {
         method: "POST",
         headers: {
           Accept: "application/json",

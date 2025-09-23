@@ -5,7 +5,6 @@ import { Field, Form, Formik } from "formik";
 import { ResetPasswordSchema } from "../../schemas/schemas";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { BASE_URL } from "../../api/baseURL";
 
 function ResetPassword() {
   const navigate = useNavigate();
@@ -13,7 +12,7 @@ function ResetPassword() {
   const otp = localStorage.getItem("OTP");
   const reset = async (email, otp, password, password_confirmation) => {
     try {
-      const res = await fetch(`${BASE_URL}/reset-password`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/reset-password`, {
         method: "POST",
         headers: {
           Accept: "application/json",

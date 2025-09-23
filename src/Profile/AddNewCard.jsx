@@ -1,6 +1,5 @@
 // import React, { useState } from "react";
 // import axios from "axios";
-// import { baseURL } from "../Utility/baseURL";
 // import { OutlineOf, Outline, ArrowDown, Group } from "../assets/image/index";
 // import { useNavigate } from "react-router";
 
@@ -27,7 +26,7 @@
 //     setLoading(true);
 //     try {
 //       const res = await axios.post(
-//         `${baseURL}/cards`,
+//         `${import.meta.env.VITE_API_URL}/cards`,
 //         {
 //           card_holder_name: cardholderName,
 //           card_number: cardNumber.replace(/\s+/g, ""), // إزالة أي مسافات
@@ -211,7 +210,6 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import { baseURL } from "../Utility/baseURL";
 import { OutlineOf, Outline, ArrowDown, Group } from "../assets/image/index";
 import { useNavigate } from "react-router";
 
@@ -240,7 +238,7 @@ const AddNewCard = () => {
       const cardToken = "350|WAGHQhjAWLlW3C35fRQ7osi7cA5RFiLq8tXZSCkVab560e96";
 
       const res = await axios.post(
-        `${baseURL}/cards`,
+        `${import.meta.env.VITE_API_URL}/cards`,
         {
           card_holder_name: cardholderName,
           stripe_pm_id: cardToken, // نرسل التوكن بدل رقم الكارت
@@ -250,7 +248,7 @@ const AddNewCard = () => {
         },
         {
           headers: {
-            Authorization: `Bearer 346|LTFJjwa9Mz5LuYbFqQgxXQyfTTz3Ek21PRdEfOfh45e79249`,
+            Authorization: `Bearer ${localStorage.getItem('token')}}`,
           },
         }
       );

@@ -35,7 +35,6 @@ import VisaVersion from "./Profile/VisaVersion";
 import AddNewCard from "./Profile/AddNewCard";
 import FAQs from "./Profile/FAQs";
 import PrivacyPolicy from "./Profile/PrivacyPolicy";
-import Favorite from "./Component/Favorite";
 import Done from "./Profile/Done";
 function App() {
   useEffect(() => {
@@ -217,7 +216,7 @@ function App() {
           path: "favorite",
           element: (
             <ProtectUser>
-              <Favorite />
+              <Favourite/>
             </ProtectUser>
           ),
         },
