@@ -30,7 +30,7 @@ export default function CalenderComponent() {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       )
@@ -90,7 +90,7 @@ export default function CalenderComponent() {
         <hr className="my-4 text-neutral-500" />
 
         <form onSubmit={handleSubmit(handleDate)}>
-          <div className="flex justify-between flex-wrap gap-3">
+          <div className="flex flex-wrap gap-4">
             {dateList.map((item, i) => {
               return (
                 <div key={i}>

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import border from "../../assets/images/Vector 4.png";
-import photo from "../../assets/images/Vector 5.png";
-import google from "../../assets/images/google.png";
-import facebook from "../../assets/images/facebook.png";
-import apple from "../../assets/images/apple.png";
-import OrLine from "../../assets/images/OrLine.png";
+import border from "../../assets/image/Vector4.png";
+import photo from "../../assets/image/Vector5.png";
+import google from "../../assets/image/google.png";
+import facebook from "../../assets/image/facebook.png";
+import apple from "../../assets/image/apple.png";
+import OrLine from "../../assets/image/OrLine.png";
 import { Link, useNavigate } from "react-router-dom";
 import Heart from "../../assets/icons/Heart.png";
 import { useFormik } from "formik";

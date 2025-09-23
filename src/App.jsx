@@ -153,7 +153,7 @@ function App() {
           ),
         },
         {
-          path: "ProfilePage",
+          path: "profile",
           element: (
             <ProtectUser>
               <ProfilePage />
@@ -161,7 +161,7 @@ function App() {
           ),
         },
         {
-          path: "EditProfile",
+          path: "edit",
           element: (
             <ProtectUser>
               <EditProfile />
@@ -169,21 +169,14 @@ function App() {
           ),
         },
         {
-          path: "Settings",
+          path: "settings",
           element: (
             <ProtectUser>
               <Settings />
             </ProtectUser>
           ),
         },
-        {
-          path: "PaymentMethod",
-          element: (
-            <ProtectUser>
-              <PaymentMethod />
-            </ProtectUser>
-          ),
-        },
+
         {
           path: "EmptyCards",
           element: (
@@ -192,14 +185,7 @@ function App() {
             </ProtectUser>
           ),
         },
-        {
-          path: "PasswordManagement",
-          element: (
-            <ProtectUser>
-              <PasswordManagement />
-            </ProtectUser>
-          ),
-        },
+
         {
           path: "VisaVersion",
           element: (
@@ -209,7 +195,7 @@ function App() {
           ),
         },
         {
-          path: "FAQs",
+          path: "faqs",
           element: (
             <ProtectUser>
               <FAQs />
@@ -217,7 +203,7 @@ function App() {
           ),
         },
         {
-          path: "PrivacyPolicy",
+          path: "privacyPolicy",
           element: (
             <ProtectUser>
               <PrivacyPolicy />
@@ -225,7 +211,7 @@ function App() {
           ),
         },
         {
-          path: "Favorite",
+          path: "favorite",
           element: (
             <ProtectUser>
               <Favorite />
@@ -233,10 +219,34 @@ function App() {
           ),
         },
         {
-          path: "Done",
+          path: "done",
           element: (
             <ProtectUser>
               <Done />
+            </ProtectUser>
+          ),
+        },
+        {
+          path: "password-management",
+          element: (
+            <ProtectUser>
+              <PasswordManagement />
+            </ProtectUser>
+          ),
+        },
+        {
+          path: "payment-method",
+          element: (
+            <ProtectUser>
+              <PaymentMethod />
+            </ProtectUser>
+          ),
+        },
+        {
+          path: "visa-version",
+          element: (
+            <ProtectUser>
+              <VisaVersion />
             </ProtectUser>
           ),
         },

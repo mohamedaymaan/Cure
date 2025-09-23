@@ -43,7 +43,7 @@ const Settings = () => {
                 Password Management
               </span>
             </p>{" "}
-            <Link to="/profile/password-management">
+            <Link to="/password-management">
               <img src={Arrow} alt="Arrow-div-icon" />
             </Link>
           </div>

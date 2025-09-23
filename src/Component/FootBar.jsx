@@ -17,7 +17,7 @@ export default function FootBar() {
         <HiOutlineHome className=" size-[20px]" />
         <p className="text-[13px]">Home</p>
       </NavLink>
-      <NavLink
+      <NavLink to="booking"
         className={({ isActive }) =>
           `flex flex-col justify-center items-center gap-[4px] ${
             isActive ? "text-[#145DB8]" : "text-[#99A2AB]"
@@ -27,7 +27,7 @@ export default function FootBar() {
         <HiOutlineCalendar className=" size-[20px]" />
         <p className="text-[13px]">Booking</p>
       </NavLink>
-      <NavLink
+      <NavLink to="/profile"
         className={({ isActive }) =>
           `flex flex-col justify-center items-center gap-[4px] ${
             isActive ? "text-[#145DB8]" : "text-[#99A2AB]"

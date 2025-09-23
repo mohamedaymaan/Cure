@@ -21,9 +21,7 @@ const EditProfile = () => {
 
   // 🟢 نجيب بيانات المستخدم أول ما الصفحة تفتح
   useEffect(() => {
-    const token =
-      localStorage.getItem("token") ||
-      "344|PBxAdmehWY1c2vxKO08FlwV3TcKlK5R3VgzSQD5Y3654b758";
+    const token = localStorage.getItem("token");
 
     axios
       .get(`${baseURL}/me`, {

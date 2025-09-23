@@ -3,7 +3,7 @@ import Waiting from "../../assets/icons/waiting.png";
 import Remove from "../../assets/icons/calendar-remove.png";
 import CheckSuccess from "../../assets/icons/CheckSuccess.png";
 import RingIcon from "../../assets/icons/Ring.png";
-import Ring from "../../assets/images/Ring.png";
+import Ring from "../../assets/image/Ring.png";
 
 export default function Notification() {
   const [notify, isNotify] = useState(true);

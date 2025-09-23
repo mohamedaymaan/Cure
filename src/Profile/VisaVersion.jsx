@@ -84,7 +84,7 @@ const VisaVersion = () => {
   const handlePay = () => {
     const selectedCard = cards.find((c) => c.id === selectedCardId);
     if (!selectedCard) return;
-    navigate("/profile/done", { state: { selectedCard } });
+    navigate("/done", { state: { selectedCard } });
   };
 
   return (
@@ -152,7 +152,7 @@ const VisaVersion = () => {
 
       {/* Add Card Button */}
       <div className="md:px-[50px] px-0 mx-auto w-[90%] mb-4">
-        <Link to="/profile/add-new-card">
+        <Link to="/add-new-card">
           <button className="px-4 cursor-pointer w-full bg-gray-600 text-white font-medium py-3 rounded-lg flex justify-center items-center gap-3">
             <img src={plus} alt="plus" /> Add Card
           </button>

@@ -1,7 +1,7 @@
 import filterarrow from "../../assets/icons/filterarrow.png";
 import filtericon from "../../assets/icons/filter.png";
 import mapicon from "../../assets/icons/mapicon.png";
-import { useEffect, useState ,useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import DoctorCard from "../../Component/DoctorCard";
 import Footer from "../../Component/Footer";
@@ -10,9 +10,8 @@ import Arrow from "../../assets/icons/Alt Arrow Down.png";
 import closeicon from "../../assets/icons/closeicon.png";
 import { Link, useNavigate } from "react-router";
 import Magnifer from "../../assets/icons/grayMagnifer.png";
-import googlemap from "../../assets/GoogleMap.png";
-import AuthContext from "../../Context/AuthContext"; 
-
+import googlemap from "../../assets/image/GoogleMap.png";
+import AuthContext from "../../Context/AuthContext";
 
 // import  axios  from axios';
 export default function Doctors() {
@@ -32,8 +31,7 @@ export default function Doctors() {
           search,
         {
           headers: {
-            Authorization:
-              `Bearer ${token}` ,
+            Authorization: `Bearer ${token}`,
           },
         }
       )
@@ -52,23 +50,22 @@ export default function Doctors() {
   }, [search]);
 
   useEffect(() => {
-      if (!token) return;
+    if (!token) return;
 
     axios
       .get(
         "http://round5-online-booking-with-doctor-api.huma-volve.com/api/specialities",
         {
           headers: {
-            Authorization:
-              `Bearer ${token}` ,
+            Authorization: `Bearer ${token}`,
           },
         }
       )
-      .then((data) => setSpecialities(data.data.data))
+      .then((data) => {setSpecialities(data.data.data),console.log(data)})
       .catch((err) => console.log(err));
   }, [token]);
 
-  const show = specialities.map((ele) => (
+  const show = specialities?.map((ele) => (
     <div
       key={ele.id}
       className={
@@ -84,15 +81,13 @@ export default function Doctors() {
   ));
 
   useEffect(() => {
-      if (!token) return;
-
+    if (!token) return;
     axios
       .get(
         "http://round5-online-booking-with-doctor-api.huma-volve.com/api/doctors",
         {
           headers: {
-            Authorization:
-              `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       )
@@ -101,7 +96,7 @@ export default function Doctors() {
   }, [token]);
 
   function formatTime(timeString) {
-    const [hour, minute] = timeString.split(":");
+    const [hour, minute] = timeString?.split(":");
     let h = parseInt(hour);
     const m = minute;
     const ampm = h >= 12 ? "pm" : "am";
@@ -114,13 +109,15 @@ export default function Doctors() {
     specialitiesFilter === ""
       ? (searchdata.length > 0 ? searchdata : doctors).map((ele) => (
           <DoctorCard
-            key={ele.doctor_profile_id}
+            key={ele.user_id}
             img={doctor}
             name={ele.name}
             hospital={ele.hospital_name}
             special={ele.specialty_name_en}
             Rating={parseFloat(Number(ele.average_rating).toFixed(1))}
-            time={`${formatTime(ele.start_time)}-${formatTime(ele.end_time)}`}
+            time={`${formatTime(ele.availability[0].start_time)}-${formatTime(
+              ele.availability[0].end_time
+            )}`}
             price={ele.price_per_hour}
           />
         ))

@@ -21,7 +21,7 @@ const PaymentMethod = () => {
       try {
         const res = await axios.get(`${baseURL}/cards`, {
           headers: {
-            Authorization: `Bearer 350|WAGHQhjAWLlW3C35fRQ7osi7cA5RFiLq8tXZSCkVab560e96`,
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
         setCards(res.data.data || []);
@@ -36,7 +36,7 @@ const PaymentMethod = () => {
     const filteredCards = cards.filter(
       (c) => c.brand.toLowerCase() === brand.toLowerCase()
     );
-    navigate("/profile/visa-version", {
+    navigate("/visa-version", {
       state: { cards: filteredCards, brand },
     });
   };
