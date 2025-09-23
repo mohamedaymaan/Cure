@@ -8,61 +8,86 @@ import { useNavigate } from "react-router";
 
 export default function Favourite() {
   const navigate = useNavigate();
-  // const [favourite, setFavourite] = useState([]);
-  // useEffect(() => {
-  //   const func = async () => {
-  //     await axios
-  //       .get(
-  //         "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors",
-  //         {
-  //           headers: {
-  //             Authorization:
-  //               "Bearer 127|Bnk5DYB3aHg1WpcPawsOxY6Ym38dNw4xZjbxQire166c1f6f",
-  //           },
-  //         }
-  //       )
-  //       .then((data) => setFavourite(data.data.data))
-  //       .catch((err) => console.log(err));
-  //   };
-  // }, []);
+  const [favourite, setFavourite] = useState([]);
+  const [favIds, setFavIds] = useState([]);
 
-  // const favouritewithspec = favourite.map((ele) => async () => {
-  //   const res = await axios.get(
-  //     `http://round5-online-booking-with-doctor-api.huma-volve.com/api/specialities/${ele.favouritable.doctor_profile.specialist_id}`
-  //   );
-  //   console.log("res=>" + res);
-  // });
+  console.log(favIds);
 
-  // useEffect(async()=>{
-  //   await axios.get()
-  // },[])
+  function addToFav(id) {
+    axios
+      .post(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
+          id,
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then(() => setFavIds((prev) => [...prev, id]))
+      .catch((err) => console.log(err));
+  }
+  function removeFromFav(id) {
+    axios
+      .delete(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
+          id,
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then(() => setFavIds((prev) => prev.filter((ele) => ele !== id)))
+      .catch((err) => console.log(err));
+  }
 
-  // let special = "";
-  // const showfav = favourite.map((ele) =>
-  //   axios
-  //     .get(
-  //       `http://round5-online-booking-with-doctor-api.huma-volve.com/api/specialities/${ele.favouritable.doctor_profile.specialist_id}`,
-  //       {
-  //         headers: {
-  //           Authorization:
-  //             "Bearer 127|Bnk5DYB3aHg1WpcPawsOxY6Ym38dNw4xZjbxQire166c1f6f",
-  //         },
-  //       }
-  //     )
-  //     .then(
-  //       // (data) => console.l(data.data.data.name_en)
-  //       <DoctorCard
-  //         key={ele.favouritable.doctor_profile.id}
-  //         img={doctor}
-  //         name={ele.favouritable.doctor_profile.name}
-  //         hospital="El-Nasr Hospital"
-  //         special={data.data.data.name_en}
-  //         Rating={parseFloat(Number(ele.average_rating).toFixed(1))}
-  //         time={`${formatTime(ele.start_time)}-${formatTime(ele.end_time)}`}
-  //         price={ele.favouritable.doctor_profile.price_per_hour}
-  //       />
-  //     )
-  // );
+  useEffect(() => {
+    axios
+      .get(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors",
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then((data) => {
+        setFavourite(data.data.data);
+        setFavIds(data.data.data.map((ele) => ele.doctor_profile_id));
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  function formatTime(timeString) {
+    const [hour, minute] = timeString.split(":");
+    let h = parseInt(hour);
+    const m = minute;
+    const ampm = h >= 12 ? "pm" : "am";
+
+    h = h % 12 || 12;
+    return `${h}:${m}${ampm}`;
+  }
+
+  const show = favourite.map((ele) => (
+    <DoctorCard
+      key={ele.doctor_profile_id}
+      img={doctor}
+      name={ele.name}
+      id={ele.user_id}
+      hospital={ele.hospital_name}
+      special={ele.specialty_name_en}
+      Rating={parseFloat(Number(ele.average_rating).toFixed(1))}
+      time={`${formatTime(ele.start_time)}-${formatTime(ele.end_time)}`}
+      price={ele.price_per_hour}
+      fav={favIds.includes(ele.user_id)}
+      addfav={() => addToFav(ele.user_id)}
+      removefav={() => removeFromFav(ele.user_id)}
+    />
+  ));
 
   return (
     <div className="w-full flex flex-col gap-[24px]">
@@ -78,7 +103,8 @@ export default function Favourite() {
         Doctors
       </div>
       <div className="flex gap-[8px] justify-center flex-wrap">
-        <DoctorCard
+        {show}
+        {/* <DoctorCard
           img={doctor}
           name="Robert Johnson"
           hospital="El-Nasr Hospital"
@@ -127,7 +153,7 @@ export default function Favourite() {
           time="9:30am - 8:00pm"
           price="350"
           fav={true}
-        />
+        /> */}
       </div>
 
       <div className=" hidden w-full h-screen absolute top-0 left-0  justify-center items-center ">

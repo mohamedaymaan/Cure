@@ -22,6 +22,24 @@ export default function Doctors() {
   const navigate = useNavigate();
   const [search, setsearch] = useState("");
   const [searchdata, setSearchdata] = useState([]);
+  const [favIds, setFavIds] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors",
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then((data) =>
+        setFavIds(data.data.data.map((ele) => ele.doctor_profile_id))
+      )
+      .catch((err) => console.log(err));
+  }, []);
 
   async function handleSearch() {
     const res = await axios
@@ -31,7 +49,7 @@ export default function Doctors() {
         {
           headers: {
             Authorization:
-              "Bearer 194|qwVMkzwb8Wa9RVVEVq4TmUam9gejtRQhM6cJibAi449b0b3f",
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
           },
         }
       )
@@ -39,9 +57,40 @@ export default function Doctors() {
       .catch((err) => console.log(err));
   }
 
+  function addToFav(id) {
+    axios
+      .post(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
+          id,
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then(() => setFavIds((prev) => [...prev, id]))
+      .catch((err) => console.log(err));
+  }
+  function removeFromFav(id) {
+    axios
+      .delete(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
+          id,
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then(() => setFavIds((prev) => prev.filter((ele) => ele !== id)))
+      .catch((err) => console.log(err));
+  }
+
   useEffect(() => {
     const debounced = setTimeout(() => {
-      if (search.length > 0) handleSearch();
+      handleSearch();
     }, 800);
 
     return () => {
@@ -56,7 +105,7 @@ export default function Doctors() {
         {
           headers: {
             Authorization:
-              "Bearer 173|SCklzkSh8yte2gFlnoKsC8Jx9Nvl6YCMMYxrQKeb37b2652b",
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
           },
         }
       )
@@ -86,7 +135,7 @@ export default function Doctors() {
         {
           headers: {
             Authorization:
-              "Bearer 173|SCklzkSh8yte2gFlnoKsC8Jx9Nvl6YCMMYxrQKeb37b2652b",
+              "Bearer 444|mheEy1i7TYaB7HeR6X1CH0l7CqpnmQmmhKCLeH93643e7d9a",
           },
         }
       )
@@ -108,27 +157,38 @@ export default function Doctors() {
     specialitiesFilter === ""
       ? (searchdata.length > 0 ? searchdata : doctors).map((ele) => (
           <DoctorCard
-            key={ele.doctor_profile_id}
+            key={ele.user_id}
             img={doctor}
             name={ele.name}
+            id={ele.user_id}
             hospital={ele.hospital_name}
             special={ele.specialty_name_en}
             Rating={parseFloat(Number(ele.average_rating).toFixed(1))}
-            time={`${formatTime(ele.start_time)}-${formatTime(ele.end_time)}`}
+            time={`${formatTime(ele.availability[0].start_time)}-${formatTime(
+              ele.availability[0].end_time
+            )}`}
             price={ele.price_per_hour}
+            fav={favIds.includes(ele.user_id)}
+            addfav={() => addToFav(ele.user_id)}
+            removefav={() => removeFromFav(ele.user_id)}
           />
         ))
       : (searchdata.length > 0 ? searchdata : doctors).map((ele) =>
           ele.specialty_name_en === specialitiesFilter ? (
             <DoctorCard
               key={ele.doctor_profile_id}
-              img={ele.img}
+              img={doctor}
               name={ele.name}
               hospital={ele.hospital_name}
               special={ele.specialty_name_en}
               Rating={parseFloat(Number(ele.average_rating).toFixed(1))}
-              time={`${formatTime(ele.start_time)}-${formatTime(ele.end_time)}`}
+              time={`${formatTime(ele.availability[0].start_time)}-${formatTime(
+                ele.availability[0].end_time
+              )}`}
               price={ele.price_per_hour}
+              fav={favIds.includes(ele.user_id)}
+              addfav={() => addToFav(ele.user_id)}
+              removefav={() => removeFromFav(ele.user_id)}
             />
           ) : null
         );

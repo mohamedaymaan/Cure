@@ -2,6 +2,8 @@ import star from "../assets/icons/star.png";
 import clock from "../assets/icons/Clock Circle.png";
 import Favorite from "../assets/icons/Favorite.png";
 import redFavorite from "../assets/icons/redheart.png";
+import axios from "axios";
+import { useState } from "react";
 
 export default function DoctorCard(props) {
   return (
@@ -13,11 +15,19 @@ export default function DoctorCard(props) {
         />
         <div className="h-[88px] justify-evenly flex flex-col">
           <p className="font-[600] flex justify-between">
-            {props.name}{" "}
+            {props.name}
             {props.fav ?? false ? (
-              <img src={redFavorite} className="size-[21px]" />
+              <img
+                src={redFavorite}
+                className="size-[21px]"
+                onClick={props.removefav}
+              />
             ) : (
-              <img src={Favorite} className="size-[21px]" />
+              <img
+                src={Favorite}
+                className="size-[21px]"
+                onClick={props.addfav}
+              />
             )}
           </p>
           <p className="font-[400] text-[11px] sm:text-[16px] text-[#6D7379]">

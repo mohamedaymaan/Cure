@@ -31,6 +31,67 @@ import FootBar from "./../../Component/FootBar";
 
 export default function Home() {
   const [specialities, setSpecialities] = useState([]);
+  const [doctors, setDoctors] = useState([]);
+  const [favIds, setFavIds] = useState([]);
+
+  function addToFav(id) {
+    axios
+      .post(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
+          id,
+        null,
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then(() => setFavIds((prev) => [...prev, id]))
+      .catch((err) => console.log(err));
+  }
+  function removeFromFav(id) {
+    axios
+      .delete(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors/" +
+          id,
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then(() => setFavIds((prev) => prev.filter((ele) => ele !== id)))
+      .catch((err) => console.log(err));
+  }
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/favourites/doctors",
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then((data) =>
+        setFavIds(data.data.data.map((ele) => ele.doctor_profile_id))
+      )
+      .catch((err) => console.log(err));
+  }, []);
+
+  function formatTime(timeString) {
+    const [hour, minute] = timeString.split(":");
+    let h = parseInt(hour);
+    const m = minute;
+    const ampm = h >= 12 ? "pm" : "am";
+
+    h = h % 12 || 12; // 0 => 12
+    return `${h}:${m}${ampm}`;
+  }
 
   useEffect(() => {
     axios
@@ -39,7 +100,7 @@ export default function Home() {
         {
           headers: {
             Authorization:
-              "Bearer 59|YTCDxY3pZ5XLo0JoKCAhXZf2XMLdddzGNmbZ3lkY242d567a",
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
           },
         }
       )
@@ -57,6 +118,40 @@ export default function Home() {
       <img src={"https://" + ele.icon} className="size-[24px]" />
       {ele.name_en}
     </div>
+  ));
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://round5-online-booking-with-doctor-api.huma-volve.com/api/doctors",
+        {
+          headers: {
+            Authorization:
+              "Bearer 446|6JtR8gzqE0U7ndMY3ADm7ISbWtkqjYnn83S4xgUf8ae16b77",
+          },
+        }
+      )
+      .then((data) => setDoctors(data.data.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const showdoctors = doctors.map((ele) => (
+    <DoctorCard
+      key={ele.user_id}
+      img={doctor}
+      id={ele.user_id}
+      name={ele.name}
+      hospital={ele.hospital_name}
+      special={ele.specialty_name_en}
+      Rating={parseFloat(Number(ele.average_rating).toFixed(1))}
+      time={`${formatTime(ele.availability[0].start_time)}-${formatTime(
+        ele.availability[0].end_time
+      )}`}
+      price={ele.price_per_hour}
+      fav={favIds.includes(ele.user_id)}
+      addfav={() => addToFav(ele.user_id)}
+      removefav={() => removeFromFav(ele.user_id)}
+    />
   ));
 
   return (
@@ -89,54 +184,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="w-full flex flex-col items-center gap-[5px]">
-          <DoctorCard
-            img={doctor}
-            name="Robert Johnson"
-            hospital="El-Nasr Hospital"
-            special="Orthopedic"
-            Rating="4.8"
-            time="9:30am - 8:00pm"
-            price="350"
-            fav={true}
-          />
-          <DoctorCard
-            img={doctor}
-            name="Robert Johnson"
-            hospital="El-Nasr Hospital"
-            special="Orthopedic"
-            Rating="4.8"
-            time="9:30am - 8:00pm"
-            price="350"
-          />
-          <DoctorCard
-            img={doctor}
-            name="Robert Johnson"
-            hospital="El-Nasr Hospital"
-            special="Orthopedic"
-            Rating="4.8"
-            time="9:30am - 8:00pm"
-            price="350"
-          />
-          <DoctorCard
-            img={doctor}
-            name="Robert Johnson"
-            hospital="El-Nasr Hospital"
-            special="Orthopedic"
-            Rating="4.8"
-            time="9:30am - 8:00pm"
-            price="350"
-            fav={true}
-          />
-          <DoctorCard
-            img={doctor}
-            name="Robert Johnson"
-            hospital="El-Nasr Hospital"
-            special="Orthopedic"
-            Rating="4.8"
-            time="9:30am - 8:00pm"
-            price="350"
-            fav={true}
-          />
+          {showdoctors}
         </div>
         <Footer />
         <FootBar />
@@ -273,54 +321,7 @@ export default function Home() {
             </button>
           </div>
           <div className="flex gap-[24px] p-[4px]  w-full overflow-x-scroll no-scrollbar ">
-            <DoctorCard
-              img={doctor}
-              name="Robert Johnson"
-              hospital="El-Nasr Hospital"
-              special="Orthopedic"
-              Rating="4.8"
-              time="9:30am - 8:00pm"
-              price="350"
-              fav={true}
-            />
-            <DoctorCard
-              img={doctor}
-              name="Robert Johnson"
-              hospital="El-Nasr Hospital"
-              special="Orthopedic"
-              Rating="4.8"
-              time="9:30am - 8:00pm"
-              price="350"
-            />
-            <DoctorCard
-              img={doctor}
-              name="Robert Johnson"
-              hospital="El-Nasr Hospital"
-              special="Orthopedic"
-              Rating="4.8"
-              time="9:30am - 8:00pm"
-              price="350"
-              fav={true}
-            />
-            <DoctorCard
-              img={doctor}
-              name="Robert Johnson"
-              hospital="El-Nasr Hospital"
-              special="Orthopedic"
-              Rating="4.8"
-              time="9:30am - 8:00pm"
-              price="350"
-            />
-            <DoctorCard
-              img={doctor}
-              name="Robert Johnson"
-              hospital="El-Nasr Hospital"
-              special="Orthopedic"
-              Rating="4.8"
-              time="9:30am - 8:00pm"
-              price="350"
-              fav={true}
-            />
+            {showdoctors}
           </div>
         </div>
         <div className=" hidden md:flex p-[5%]  flex-col items-center gap-[64px]">
