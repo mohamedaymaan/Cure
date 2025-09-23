@@ -41,6 +41,9 @@ function App() {
   useEffect(() => {
     initFlowbite();
   }, []);
+  useEffect(() => {
+    initFlowbite();
+  }, []);
 
   const router = createHashRouter([
     {
