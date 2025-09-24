@@ -3,7 +3,7 @@ import symbol1 from "../assets/icons/facebook.png";
 import symbol2 from "../assets/icons/whats.png";
 import symbol3 from "../assets/icons/youtube.png";
 import symbol4 from "../assets/icons/linkedin.png";
-import icon1 from "../assets/icons/phoneicon.png";
+import icon1 from "../assets/icons/phoneIcon.png";
 import icon2 from "../assets/icons/messageicon.png";
 import icon3 from "../assets/icons/locationicon.png";
 
