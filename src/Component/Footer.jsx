@@ -4,7 +4,7 @@ import symbol2 from "../assets/icons/whats.png";
 import symbol3 from "../assets/icons/youtube.png";
 import symbol4 from "../assets/icons/linkedin.png";
 import Icon1 from "../assets/icons/phone.png";
-import Icon2 from "../assets/icons/message.png";
+import Icon2 from "../assets/icons/messageF.png";
 import Icon3 from "../assets/icons/locationF.png";
 
 export default function Footer() {
