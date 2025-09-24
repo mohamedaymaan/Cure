@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { done } from "../assets/image";
+import { done } from "../assets/image/index.js";
 
 const Done = () => {
   return (
