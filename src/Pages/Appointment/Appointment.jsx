@@ -1,10 +1,5 @@
 import React from "react";
 import ArrowLeft from "../../assets/icons/ArrowLeft.png";
-import Calendar from "../../assets/icons/calendar.png";
-import CalendarBlue from "../../assets/icons/calendarblue.png";
-import Location from "../../assets/icons/Location.png";
-import Medal from "../../assets/icons/medal.png";
-import Message from "../../assets/icons/messages.png";
 import Star from "../../assets/icons/starYellow.png";
 import { Link } from "react-router";
 import CalenderComponent from "../../Component/Calender/Calender";
