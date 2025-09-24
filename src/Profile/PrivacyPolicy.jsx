@@ -1,5 +1,5 @@
 // import React from "react";
-// import { ArrowDown } from "../assets/image";
+// import { ArrowDown } from "../assets/image/index.js";
 // import { useNavigate } from "react-router-dom";
 
 // const PrivacyPolicy = () => {
@@ -87,7 +87,7 @@
 // export default PrivacyPolicy;
 // -----------
 import React, { useEffect, useState } from "react";
-import { ArrowDown } from "../assets/image";
+import { ArrowDown } from "../assets/image/index.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 

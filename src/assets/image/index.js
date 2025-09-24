@@ -25,7 +25,7 @@ import OutlineOf from "./OutlineOf.png";
 import Group from "./Group.png";
 import creditCard from "./credit-card.png";
 import plus from "./plus.png";
-import done from "./Okay.png";
+import done from "./Done.png";
 import Speeny from "./Speeny.png";
 
 export {
