@@ -3,9 +3,9 @@ import symbol1 from "../assets/icons/facebook.png";
 import symbol2 from "../assets/icons/whats.png";
 import symbol3 from "../assets/icons/youtube.png";
 import symbol4 from "../assets/icons/linkedin.png";
-import icon1 from "../assets/icons/phoneicon.png";
-import icon2 from "../assets/icons/messageicon.png";
-import icon3 from "../assets/icons/locationicon.png";
+import Icon1 from "../assets/icons/phone.png";
+import Icon2 from "../assets/icons/messageicon.png";
+import Icon3 from "../assets/icons/locationicon.png";
 
 export default function Footer() {
   return (
@@ -58,21 +58,21 @@ export default function Footer() {
             <p className="text-[24px]">Contact Info</p>
             <ul className="text-[13px] lg:text-[16px]">
               <li className="flex gap-[15px]">
-                <img src={icon1} className="size-[16px]" />
+                <img src={Icon1} className="size-[16px]" />
                 <div>
                   <p>Phone</p>
                   <p className="font-[100]">080 707 555-321</p>
                 </div>
               </li>
               <li className="flex gap-[15px]">
-                <img src={icon2} className="size-[16px]" />
+                <img src={Icon2} className="size-[16px]" />
                 <div>
                   <p>Email</p>
                   <p className="font-[100]">demo@example.com</p>
                 </div>
               </li>
               <li className="flex gap-[15px]">
-                <img src={icon3} className="size-[16px]" />
+                <img src={Icon3} className="size-[16px]" />
                 <div>
                   <p>Address</p>
                   <p className="max-w-[186px]">
