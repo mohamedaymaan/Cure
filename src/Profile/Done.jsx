@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import done from "../assets/icons/Done.png";
+import DoneIt from "../assets/icons/blueheart.png";
 const Done = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -8,7 +8,7 @@ const Done = () => {
         {/* الأيقونة */}
         <div className="flex items-center justify-center mb-4">
           <div className="rounded-full p-4">
-            <img src={done} alt="Done" className="object-contain" />
+            <img src={DoneIt} alt="Done" className="object-contain" />
           </div>
         </div>
 
