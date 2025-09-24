@@ -2,7 +2,7 @@ import backimage from "../../assets/icons/Mapback.png";
 import Arrow from "../../assets/icons/Alt Arrow Down.png";
 import Magnifer from "../../assets/icons/grayMagnifer.png";
 import snippe from "../../assets/icons/snippeicon.png";
-import locateicon from "../../assets/icons/icon.png";
+import locateicon from "../../assets/icons/bluePin.png";
 import { Link } from "react-router";
 
 export default function Mappage() {

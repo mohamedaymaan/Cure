@@ -7,7 +7,6 @@ import Doctors from "./Pages/Doctors/Doctors";
 import Favourite from "./Pages/Favourite/Favourite";
 import Specialist from "./Pages/Specialist/Specialist";
 import Search from "./Pages/Search/Search";
-import Mappage from "./Pages/Map/Mappage";
 import SearchLocation from "./Pages/Search/SearchLocation";
 import LoadingMap from "./Pages/Search/LoadingMap";
 import SearchResult from "./Pages/Search/SearchResult";
@@ -37,11 +36,12 @@ import FAQs from "./Profile/FAQs";
 import PrivacyPolicy from "./Profile/PrivacyPolicy";
 import Done from "./Profile/Done";
 import "flowbite";
+import Mappage from "./Pages/Map/Mappage";
 function App() {
   useEffect(() => {
     initFlowbite();
   }, []);
- 
+
   const router = createHashRouter([
     {
       path: "/",
@@ -214,7 +214,7 @@ function App() {
           path: "favorite",
           element: (
             <ProtectUser>
-              <Favourite/>
+              <Favourite />
             </ProtectUser>
           ),
         },
