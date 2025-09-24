@@ -36,14 +36,12 @@ import AddNewCard from "./Profile/AddNewCard";
 import FAQs from "./Profile/FAQs";
 import PrivacyPolicy from "./Profile/PrivacyPolicy";
 import Done from "./Profile/Done";
+import "flowbite";
 function App() {
   useEffect(() => {
     initFlowbite();
   }, []);
-  useEffect(() => {
-    initFlowbite();
-  }, []);
-
+ 
   const router = createHashRouter([
     {
       path: "/",

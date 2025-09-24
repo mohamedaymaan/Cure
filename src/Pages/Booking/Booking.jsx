@@ -31,12 +31,12 @@ export default function Booking() {
 
   return (
     <>
-      <div className="w-4/5 mx-auto my-7">
+      <div className="w-[90%] md:w-4/5 mx-auto my-7">
         <h2 className="my-3 text-Navy font-normal text-2xl">
           Your appointments
         </h2>
-        <div className="flex justify-between my-6">
-          <div className="w-[30%] flex space-x-5">
+        <div className="flex justify-between my-6 flex-col md:flex-row">
+          <div className="w-[30%] flex space-x-5 mb-4 md:m-0">
             <button className="py-2 px-4  rounded-[10px] focus:bg-NavyBlue cursor-pointer focus:text-white text-neutral-500 text-[16px] ">
               All
             </button>
@@ -50,7 +50,7 @@ export default function Booking() {
               Canceled
             </button>
           </div>
-          <div className="w-1/2 flex justify-end relative">
+          <div className="w-full md:w-1/2 flex md:justify-end relative">
             <label htmlFor="default-input">
               <img
                 src={Calender}
@@ -68,7 +68,7 @@ export default function Booking() {
         <div className="flex flex-wrap items-center gap-2">
           {booking.map(({date,time,created_at,doctor:{name,bio}}) => {
             return (
-              <div className="w-[30%] p-3 rounded-2xl border border-neutral-300">
+              <div className="w-full md:w-[30%] p-3 rounded-2xl border border-neutral-300">
                 <div className="flex justify-between items-center">
                   <div className="flex items-center">
                     <img src={Calender} alt="" />

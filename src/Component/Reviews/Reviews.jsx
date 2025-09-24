@@ -33,7 +33,7 @@ export default function Reviews() {
       <div className="flex gap-3.5 flex-wrap">
         {rev.map((review,i) => {
           return (
-            <div key={i} className="py-[12px] px-[14px] border border-neutral-400 rounded-2xl w-[48%]">
+            <div key={i} className="py-[12px] px-[14px] border border-neutral-400 rounded-2xl w-full md:w-[48%]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <img src={Avatar} alt="" />
@@ -48,7 +48,7 @@ export default function Reviews() {
                   <span className="text-amber-300">{review.rating}</span>
                 </div>
               </div>
-              <p className="my-3 text-neutral-600">
+              <p className="mx-3 my-3 text-neutral-600 bg-neutral-300 rounded-[8px] p-1">
                {review.comment}
               </p>
             </div>

@@ -25,15 +25,11 @@ export default function CalenderComponent() {
     formData.append("time", time);
 
     let { data } = await axios
-      .post(
-        `${import.meta.env.VITE_API_URL}/appointments`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
+      .post(`${import.meta.env.VITE_API_URL}/appointments`, formData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .catch((err) => {
         console.log(err.response?.data.message);
         toast.error(err.response?.data.message);
@@ -44,22 +40,16 @@ export default function CalenderComponent() {
   }
   async function handleDisplayData() {
     let { data } = await axios
-      .get(
-        `${import.meta.env.VITE_API_URL}/doctors/1/available-slots`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}}`,
-            
-          },
-        }
-      )
+      .get(`${import.meta.env.VITE_API_URL}/doctors/1/available-slots`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .catch((err) => {
         console.log(err);
       });
     let { doctor_id, available_slots } = data;
     setDateList(available_slots);
-
-    // console.log(new Date(available_slots[0].time).toLocaleTimeString('en-US',{hour:"numeric" , hour12:true}));
   }
   function handleTime(fullTime) {
     let [hours, min] = fullTime.split(":");

@@ -26,31 +26,55 @@ export default function Appointment() {
           </p>
         </div>
         <div className="grid grid-cols-12 gap-4">
-          <div className="col-span-7">
+          <div className="col-span-12 md:col-span-7">
             <CalenderComponent />
-            <div className="my-10 flex justify-between items-center">
-              <p>Reviews and Rating</p>
-              {/* <button className="flex items-center cursor-pointer">
+            <div className="hidden md:block">
+              <div className="my-10 flex justify-between items-center">
+                <p>Reviews and Rating</p>
+                {/* <button className="flex items-center cursor-pointer">
                 <img src={Pen} alt="" />
                 <span className="text-NavyBlue">add review</span>
               </button> */}
-              <AddReview />
-            </div>
-            <div className="flex items-center justify-between my-5">
-              <p className="text-[40px] font-normal text-Navy">4.5/5</p>
-              <div>
-                <div className="flex mb-2">
-                  {Array.from({ length: 5 }).map((img, i) => {
-                    return <img src={Star} alt="" key={i} />;
-                  })}
-                </div>
-                <p>1250+ Reviews</p>
+                <AddReview />
               </div>
+              <div className="flex items-center justify-between my-5">
+                <p className="text-[40px] font-normal text-Navy">4.5/5</p>
+                <div>
+                  <div className="flex mb-2">
+                    {Array.from({ length: 5 }).map((img, i) => {
+                      return <img src={Star} alt="" key={i} />;
+                    })}
+                  </div>
+                  <p>1250+ Reviews</p>
+                </div>
+              </div>
+              <Reviews />
             </div>
-            <Reviews />
           </div>
-          <div className="col-span-5">
+          <div className="col-span-12 md:col-span-5">
             <Profile />
+            <div className="md:hidden block">
+              <div className="my-10 flex justify-between items-center">
+                <p>Reviews and Rating</p>
+                {/* <button className="flex items-center cursor-pointer">
+                <img src={Pen} alt="" />
+                <span className="text-NavyBlue">add review</span>
+              </button> */}
+                <AddReview />
+              </div>
+              <div className="flex items-center justify-between my-5">
+                <p className="text-[40px] font-normal text-Navy">4.5/5</p>
+                <div>
+                  <div className="flex mb-2">
+                    {Array.from({ length: 5 }).map((img, i) => {
+                      return <img src={Star} alt="" key={i} />;
+                    })}
+                  </div>
+                  <p>1250+ Reviews</p>
+                </div>
+              </div>
+              <Reviews />
+            </div>
           </div>
         </div>
       </div>
