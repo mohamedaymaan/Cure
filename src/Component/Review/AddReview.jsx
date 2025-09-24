@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Pen from "../../assets/icons/pen.png";
+import Pen from "../../assets/icons/Pen.png";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
