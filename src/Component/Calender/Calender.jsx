@@ -2,7 +2,7 @@ import React, { act, useEffect, useState } from "react";
 import ArrowUp from "../../assets/icons/ArrowUp.png";
 import ArrowDown from "../../assets/icons/ArrowDown.png";
 import Calendar from "../../assets/icons/calendar.png";
-import CalendarBlue from "../../assets/icons/BlueCalender.png";
+import CalendarBlue from "../../assets/icons/calendarBlue.png";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
