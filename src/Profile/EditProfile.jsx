@@ -9,7 +9,7 @@ import {
   mdi_email,
   editProfile,
   UserRounded,
-} from "../assets/image/index";
+} from "../assets/image/index.js";
 
 const EditProfile = () => {
   const [email, setEmail] = useState("");

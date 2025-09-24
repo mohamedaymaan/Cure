@@ -13,7 +13,7 @@ import {
   FAQs,
   Lock,
   Logout,
-} from "../assets/image/index";
+} from "../assets/image/index.js";
 import AvatarPlaceholder from "../assets/icons/Avatar.png";
 
 const ProfilePage = () => {

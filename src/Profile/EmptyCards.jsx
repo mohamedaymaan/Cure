@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import { ArrowDown, creditCard, plus } from "../assets/image/index";
+import { ArrowDown, creditCard, plus } from "../assets/image/index.js";
 
 const EmptyCards = () => {
   const navigate = useNavigate();

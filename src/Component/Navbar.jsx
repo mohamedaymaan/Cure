@@ -18,7 +18,7 @@ import {
   Logout,
   Arrow,
   Location,
-} from "../assets/image/index";
+} from "../assets/image/index.js";
 import AuthContext from "../Context/AuthContext";
 
 export default function Navbar() {

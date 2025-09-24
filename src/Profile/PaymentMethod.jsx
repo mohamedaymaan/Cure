@@ -8,7 +8,7 @@ import {
   ApplePay,
   PayPal,
   Arrow,
-} from "../assets/image/index";
+} from "../assets/image/index.js";
 
 const PaymentMethod = () => {
   const navigate = useNavigate();

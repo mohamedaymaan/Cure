@@ -1,5 +1,5 @@
 // import { Link, useNavigate } from "react-router";
-// import { ArrowDown, plus, Visa } from "../assets/image/index";
+// import { ArrowDown, plus, Visa } from "../assets/image/index.js";
 // import { useState } from "react";
 
 // const VisaVersion = () => {
@@ -61,7 +61,7 @@
 
 import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router";
-import { ArrowDown, plus, Visa, MasterCard } from "../assets/image/index";
+import { ArrowDown, plus, Visa, MasterCard } from "../assets/image/index.js";
 
 const VisaVersion = () => {
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowDown, Outline } from "../assets/image/index";
+import { ArrowDown, Outline } from "../assets/image/index.js";
 import { useNavigate } from "react-router";
 
 const PasswordManagement = () => {

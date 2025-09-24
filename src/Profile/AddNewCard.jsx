@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
 // import axios from "axios";
-// import { OutlineOf, Outline, ArrowDown, Group } from "../assets/image/index";
+// import { OutlineOf, Outline, ArrowDown, Group } from "../assets/image/index.js";
 // import { useNavigate } from "react-router";
 
 // const AddNewCard = () => {
@@ -210,7 +210,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
-import { OutlineOf, Outline, ArrowDown, Group } from "../assets/image/index";
+import { OutlineOf, Outline, ArrowDown, Group } from "../assets/image/index.js";
 import { useNavigate } from "react-router";
 
 const AddNewCard = () => {

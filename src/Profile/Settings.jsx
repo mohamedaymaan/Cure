@@ -4,7 +4,7 @@ import {
   ArrowDown,
   KeySquare,
   UserRounded,
-} from "../assets/image/index";
+} from "../assets/image/index.js";
 import { Link, useNavigate } from "react-router";
 
 const Settings = () => {

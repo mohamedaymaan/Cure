@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
 // import { useNavigate } from "react-router";
-// import { ArrowDown } from "../assets/image/index"; // أيقونة الرجوع
+// import { ArrowDown } from "../assets/image/index.js"; // أيقونة الرجوع
 
 // const faqsData = [
 //   {
@@ -92,7 +92,7 @@
 // ------------ With Api  --------
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { ArrowDown } from "../assets/image/index";
+import { ArrowDown } from "../assets/image/index.js";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai"; // أيقونات من react-icons
 import axios from "axios";
 
