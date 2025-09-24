@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { done } from "../assets/image/index.js";
-
+import done from "../assets/icons/Done.png";
 const Done = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
